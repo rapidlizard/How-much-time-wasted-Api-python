@@ -1,12 +1,12 @@
 # HowMuchTimeHaveIWasted.com
-The purpose of this app is to show you how many hours you wasted playing games and if you want to cry even more look at your csgo stats.
+The purpose of this app is to show you how many hours you wasted playing games and the crazy things you could have done with that time
 
 ## How it works:
 - You give it your steam user id. e.g: `76561198066000502` (account has to be public)
 - We connect with the steam api and get your user data and your game list. [Steam API docs](https://developer.valvesoftware.com/wiki/Steam_Web_API#Interfaces_and_method)
 - Then we calculate the amount of hours you spent in total playing games
 - We provide you with an overall rating and score (total_hours x (total_hours * 0.5)).
-- Additionally if the user owns and has played csgo
+- Optionally at the end you can save your result to a leaderboard to assert your dominance
 
 ### Ratings: 
 - 0 -> 49 hours: **What even are games?** Seriously what are they???
