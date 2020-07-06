@@ -20,8 +20,65 @@ The purpose of this app is to show you how many hours you wasted playing games a
 - 8000 -> 9999 hours: **Dude. Are you okay?** When was the last time you went outside??
 - 10'000 and onwards: **You need to seek medical help** https://www.nhs.uk/
 
+## User Stories:
 
-# Links:
+**As a** user
+**I want** I view the total hours I have on my steam account
+**So that** the user can see how much of my life I wasted
+
+- **As a** user
+**I want** to know which account I accessed 
+**So that** I know I am looking at the right account
+
+- **As a** user
+**I want** to get a score based on my total hours
+**So that** I can compare against other steam users
+
+- **As a** user
+**I want** to know if the steam id I entered is incorrect or correct
+**So that** I can enter it in correctly and see the statistics
+
+- **As a** user
+**I want** to get a rating based on my total hours played
+**So that** I can see how bad/good I am at living life
+
+- **As a** user
+**I want** to know the reason why it couldn't access my account and how to fix
+**So that** I can try and fix it
+
+**As a** user
+**I want** to see more statistics about csgo
+**So that** I can assert my dominance over other players
+
+- **As a** user
+**I want** to see my total hours on csgo
+**So that** I can see much of my life I wasted on CSGO
+
+- **As a**
+**I want**
+**So that**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Links:
 **Get user:**
 
 - http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamids=76561198066000502
