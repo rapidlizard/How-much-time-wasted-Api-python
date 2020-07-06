@@ -54,29 +54,17 @@ The purpose of this app is to show you how many hours you wasted playing games a
 **I want** to see my total hours on csgo
 **So that** I can see much of my life I wasted on CSGO
 
-- **As a**
-**I want**
+- **As a** user
+**I want** to see a graph with my most used weapons
+**So that** I can see which weapons I need to use more
+
+- **As a** user
+**I want** to see my total kills in the game
+**So that** I can compare with other people
+
+- **As a** user
+**I want** 
 **So that**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Links:
 **Get user:**
@@ -94,5 +82,3 @@ The purpose of this app is to show you how many hours you wasted playing games a
 **Get recently played games:**
 
 - http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamid=76561198066000502&format=json
-
-- We then compare your total hours to a list of activities or great achievments that were done in less time
