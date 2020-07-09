@@ -13,5 +13,22 @@ def test_user_transformer_turns_json_dict_into_user_obj():
         'url': 'url',
         'created': 'now'
     }
-    expected = User_transformer().transform(data)
-    assert type(expected) == User
+
+    user = User_transformer().transform(data)
+
+    assert type(user) == User
+
+def test_user_transformer_turns_json_dict_into_user_atributes():
+    data = {
+        'name': 'jeff',
+        'img': 'img',
+        'url': 'url',
+        'created': 'now'
+    }
+
+    user = User_transformer().transform(data)
+
+    assert user.name == 'jeff'
+    assert user.img == 'img'
+    assert user.url == 'url'
+    assert user.created == 'now'
