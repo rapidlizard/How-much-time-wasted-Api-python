@@ -7,6 +7,7 @@ name = "pypi"
 pytest = "*"
 flask = "*"
 pytest-cov = "*"
+pylint-flask = "*"
 
 [dev-packages]
 
