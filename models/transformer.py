@@ -2,13 +2,14 @@ from models.user import User
 from models.game import Game
 
 class Transformer():
-    
+
     def transform_user(self, data):
         user = User(
             name= data['personaname'],
             img= data['avatarfull'],
             url= data['profileurl'],
-            created= str(data['timecreated'])
+            created= str(data['timecreated']),
+            games= []
         )
         return user
 

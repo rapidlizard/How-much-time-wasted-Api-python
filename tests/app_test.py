@@ -22,7 +22,8 @@ def test_api_returns_user_json(client, steamid):
         'name': 'Lixard',
         'img': 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg',
         'url': 'https://steamcommunity.com/profiles/76561198066000502/',
-        'created': '1340730740'
+        'created': '1340730740',
+        'games': []
     }
 
 def test_api_returns_error_if_given_bad_steamid(client):
