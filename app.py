@@ -6,7 +6,7 @@ from models.transformers import User_transformer
 app = Flask(__name__)
 
 @app.route('/howmuchtimehaveiwasted/')
-def no_user_id():
+def no_steamid():
     return jsonify('Please provide a steamid'), 400
 
 @app.route('/howmuchtimehaveiwasted/<steamid>')
