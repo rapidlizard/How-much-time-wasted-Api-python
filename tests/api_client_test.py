@@ -3,7 +3,7 @@ currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
-import pytest
+import pytest, json
 
 from models.api_client import Steam
 
@@ -11,12 +11,7 @@ from models.api_client import Steam
 def steamid():
     return "76561198066000502"
 
-def test_steam_client_returns_json(steamid):
-    data = Steam.get_user(steamid)
-
-    assert type(data) == dict
-
-def test_steam_client_returns_user_data_without_wrapping(steamid):
+def test_steam_client_returns_user_data(steamid):
     expected = {
         "steamid": steamid,
         "communityvisibilitystate":3,
@@ -37,12 +32,19 @@ def test_steam_client_returns_user_data_without_wrapping(steamid):
         "locstatecode":"14"
     }
 
-    data = Steam.get_user(steamid)
+    data = Steam.get_user_data(steamid)
 
     assert data == expected
 
 def test_steam_client_returns_correct_user(steamid):
-
-    data = Steam.get_user(steamid)
+    data = Steam.get_user_data(steamid)
 
     assert data['steamid'] == steamid
+
+def test_steam_client_returns_games_list(steamid):
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/gameslist.json') as f:
+        expected = json.load(f)
+    
+    data = Steam.get_games_data(steamid)
+
+    assert data == expected

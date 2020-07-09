@@ -12,7 +12,7 @@ def no_steamid():
 @app.route('/howmuchtimehaveiwasted/<steamid>')
 def get_user(steamid):
     try:
-        data = Steam.get_user(steamid)
+        data = Steam.get_user_data(steamid)
     except:
         return jsonify('There was a problem finding that user'), 400
 
