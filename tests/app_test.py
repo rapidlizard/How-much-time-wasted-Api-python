@@ -30,9 +30,11 @@ def test_api_returns_error_if_given_bad_steamid(client):
 
     response = client.get('/howmuchtimehaveiwasted/' + bad_steamid)
 
+    assert response.status_code == 400
     assert response.get_json() == 'There was a problem finding that user'
 
 def test_api_returns_error_if_steamid_not_given(client):
     response = client.get('/howmuchtimehaveiwasted/')
 
+    assert response.status_code == 400
     assert response.get_json() == 'Please provide a steamid'

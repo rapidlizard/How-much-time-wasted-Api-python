@@ -7,14 +7,14 @@ app = Flask(__name__)
 
 @app.route('/howmuchtimehaveiwasted/')
 def no_user_id():
-    return jsonify('Please provide a steamid')
+    return jsonify('Please provide a steamid'), 400
 
 @app.route('/howmuchtimehaveiwasted/<steamid>')
 def get_user(steamid):
     try:
         data = Steam.get_user(steamid)
     except:
-        return jsonify('There was a problem finding that user')
+        return jsonify('There was a problem finding that user'), 400
 
     user = User_transformer().transform(data)
 
