@@ -11,9 +11,10 @@ from models.api_client import Steam
 def steamid():
     return "76561198066000502"
 
-def test_steam_client_returns_user_data(steamid):
-    expected = {
-        "steamid": steamid,
+@pytest.fixture
+def user_data():
+    return {
+        "steamid": "76561198066000502",
         "communityvisibilitystate":3,
         "profilestate":1,
         "personaname":"Lixard",
@@ -32,19 +33,31 @@ def test_steam_client_returns_user_data(steamid):
         "locstatecode":"14"
     }
 
-    data = Steam.get_user_data(steamid)
+@pytest.fixture
+def user_games():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/gameslist.json') as f:
+        games = json.load(f)
+    return games
+
+
+def test_steam_client_returns_user_with_games_list(steamid, user_data, user_games):
+    expected = [user_data, user_games]
+
+    data = Steam().get_user(steamid)
 
     assert data == expected
 
+def test_steam_client_returns_user_data(steamid, user_data):
+    data = Steam().get_user_data(steamid)
+
+    assert data == user_data
+
 def test_steam_client_returns_correct_user(steamid):
-    data = Steam.get_user_data(steamid)
+    data = Steam().get_user_data(steamid)
 
     assert data['steamid'] == steamid
 
-def test_steam_client_returns_games_list(steamid):
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/gameslist.json') as f:
-        expected = json.load(f)
-    
-    data = Steam.get_games_data(steamid)
+def test_steam_client_returns_games_list(steamid, user_games):
+    data = Steam().get_user_games(steamid)
 
-    assert data == expected
+    assert data == user_games
