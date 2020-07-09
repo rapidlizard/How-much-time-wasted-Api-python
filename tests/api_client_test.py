@@ -3,16 +3,22 @@ currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
+import pytest
+
 from models.api_client import Steam
 
-def test_steam_client_returns_json():
-    data = Steam.get_user()
-    
+@pytest.fixture
+def steamid():
+    return "76561198066000502"
+
+def test_steam_client_returns_json(steamid):
+    data = Steam.get_user(steamid)
+
     assert type(data) == dict
 
-def test_steam_client_returns_user_data_without_wrapping():
+def test_steam_client_returns_user_data_without_wrapping(steamid):
     expected = {
-        "steamid":"76561198066000502",
+        "steamid": steamid,
         "communityvisibilitystate":3,
         "profilestate":1,
         "personaname":"Lixard",
@@ -31,13 +37,12 @@ def test_steam_client_returns_user_data_without_wrapping():
         "locstatecode":"14"
     }
 
-    data = Steam.get_user()
+    data = Steam.get_user(steamid)
 
     assert data == expected
 
-def test_steam_client_returns_correct_user():
-    expected = '76561198066000502'
+def test_steam_client_returns_correct_user(steamid):
 
-    data = Steam.get_user()
+    data = Steam.get_user(steamid)
 
-    assert data['steamid'] == expected
+    assert data['steamid'] == steamid
