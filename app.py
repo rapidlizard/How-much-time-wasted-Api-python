@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from models.user import User
 from models.api_client import Steam
-from models.transformers import User_transformer
+from models.transformer import Transformer
 
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ def get_user(steamid):
     except:
         return jsonify('There was a problem finding that user'), 400
 
-    user = User_transformer().transform(data)
+    user = Transformer().transform_user(data)
 
     return jsonify(user.to_json())
 

@@ -1,8 +1,8 @@
 from models.user import User
 
-class User_transformer():
+class Transformer():
     
-    def transform(self, data):
+    def transform_user(self, data):
         user = User(
             name= data['personaname'],
             img= data['avatarfull'],
