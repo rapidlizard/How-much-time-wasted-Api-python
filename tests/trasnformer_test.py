@@ -3,10 +3,13 @@ currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
+import json
+
 from models.transformer import Transformer
 from models.user import User
+from models.game import Game
 
-def test_user_transformer_turns_json_dict_into_user_obj():
+def test_transformer_turns_user_data_into_user_obj():
     data = {
         "steamid": "76561198066000502",
         "communityvisibilitystate":3,
@@ -35,6 +38,26 @@ def test_user_transformer_turns_json_dict_into_user_obj():
     assert user.url == 'https://steamcommunity.com/profiles/76561198066000502/'
     assert user.created == '1340730740'
 
-#def test_user_transformer_turns_games_data_into_game_obj():
-#    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/gameslist.json') as f:
-#        data = json.load(f)
+
+def test_transformer_turns_game_data_into_game_obj():
+    data = {
+        "appid": 17390,
+        "playtime_forever": 3257,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+    }
+
+    game = Transformer().transform_game(data)
+
+    assert game.appid == 17390
+    assert game.playtime == 3257
+
+def test_transformer_turns_each_game_in_games_data_into_game_obj():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/gameslist.json') as f:
+        data = json.load(f)
+
+    games = Transformer().transform_games_list(data)
+
+    for game in games:
+        assert type(game) == Game
