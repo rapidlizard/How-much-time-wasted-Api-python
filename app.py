@@ -7,7 +7,10 @@ app = Flask(__name__)
 
 @app.route('/howmuchtimehaveiwasted/<steamid>')
 def get_user(steamid):
-    data = Steam.get_user(steamid)
+    try:
+        data = Steam.get_user(steamid)
+    except:
+        return jsonify("there was a problem finding that user")
 
     user = User_transformer().transform(data)
 

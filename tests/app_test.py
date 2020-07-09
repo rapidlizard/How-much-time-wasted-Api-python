@@ -25,4 +25,9 @@ def test_api_returns_user_json(client, steamid):
         'created': '1340730740'
     }
 
+def test_api_returns_error_if_given_bad_steamid(client):
+    bad_steamid = '42069'
 
+    response = client.get('/howmuchtimehaveiwasted/' + bad_steamid)
+
+    assert response.get_json() == "there was a problem finding that user"
