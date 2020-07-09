@@ -23,7 +23,7 @@ The purpose of this app is to show you how many hours you wasted playing games a
 ## User Stories:
 
 **As a** user
-**I want** I view the total hours I have on my steam account
+**I want** to view the total hours I have on my steam account
 **So that** the user can see how much of my life I wasted
 
 - **As a** user
