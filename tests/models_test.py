@@ -15,13 +15,13 @@ def test_user_has_atributes():
 
 def test_user_to_json_returns_json():
     user = User(name='Lixard', img='myimg.jpg', url='myurl.com', created='10/10/2012')
-    
-    result = user.to_json()
     expected = {
         'name': 'Lixard',
         'img': 'myimg.jpg',
         'url': 'myurl.com',
         'created': '10/10/2012'
     }
+    
+    result = user.to_json()
 
     assert result == expected
