@@ -1,18 +1,16 @@
-import os, sys
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
-
 from app import app
 import pytest
+
 
 @pytest.fixture
 def client():
     return app.test_client()
 
+
 @pytest.fixture
 def steamid():
     return "76561198066000502"
+
 
 def test_api_returns_user_json(client, steamid):
     response = client.get('/howmuchtimehaveiwasted/' + steamid)
@@ -26,6 +24,7 @@ def test_api_returns_user_json(client, steamid):
         'games': []
     }
 
+
 def test_api_returns_error_if_given_bad_steamid(client):
     bad_steamid = '42069'
 
@@ -33,6 +32,7 @@ def test_api_returns_error_if_given_bad_steamid(client):
 
     assert response.status_code == 400
     assert response.get_json() == 'There was a problem finding that user'
+
 
 def test_api_returns_error_if_steamid_not_given(client):
     response = client.get('/howmuchtimehaveiwasted/')

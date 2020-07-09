@@ -4,12 +4,6 @@ from models.user_transformer import User_transformer
 from models.game_transformer import Game_transformer
 
 import json
-import os
-import sys
-
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
 
 
 def test_transformer_turns_user_data_into_user_obj():
