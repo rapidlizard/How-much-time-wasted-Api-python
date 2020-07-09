@@ -10,8 +10,13 @@ import pytest
 def client():
     return app.test_client()
 
-def test_api_returns_steam_id(client):
-    response = client.get('/howmuchtimehaveiwasted/42069')
-    assert response.data == b'Your steam id is:42069'
+def test_api_returns_user_json(client):
+    response = client.get('/howmuchtimehaveiwasted')
+    assert response.get_json() == {
+        'name': 'lizard',
+        'img': 'img',
+        'url': 'url',
+        'created': 'now'
+    }
 
 
