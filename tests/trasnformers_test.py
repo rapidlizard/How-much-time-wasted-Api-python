@@ -18,7 +18,7 @@ def test_transformer_turns_user_data_into_user_obj():
         "avatarmedium": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_medium.jpg",
         "avatarfull": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg",
         "avatarhash": "4ad45031967e52ce05f28c7f5591227e66715c5d",
-        "lastlogoff": 1594245076,
+        "lastlogoff": 1594329563,
         "personastate": 0,
         "primaryclanid": "103582791463737200",
         "timecreated": 1340730740,

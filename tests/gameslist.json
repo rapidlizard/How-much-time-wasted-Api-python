@@ -887,9 +887,9 @@
     },
     {
         "appid": 325610,
-        "playtime_2weeks": 931,
-        "playtime_forever": 931,
-        "playtime_windows_forever": 931,
+        "playtime_2weeks": 991,
+        "playtime_forever": 991,
+        "playtime_windows_forever": 991,
         "playtime_mac_forever": 0,
         "playtime_linux_forever": 0
     },
@@ -916,7 +916,7 @@
     },
     {
         "appid": 365960,
-        "playtime_2weeks": 194,
+        "playtime_2weeks": 140,
         "playtime_forever": 427,
         "playtime_windows_forever": 194,
         "playtime_mac_forever": 0,
