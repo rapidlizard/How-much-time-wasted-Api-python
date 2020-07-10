@@ -63,13 +63,16 @@ def test_steam_client_returns_correct_user(requests_mock, mock_user_json, steami
     assert resp['steamid'] == steamid
 
 
-def test_steam_client_returns_user_data(steamid, user_data):
+def test_steam_client_returns_user_data_with_correct_atributes(steamid, user_data):
     data = Steam().get_user_data(steamid)
 
-    assert data == user_data
+    assert 'personaname' in data
+    assert 'avatarfull' in data
+    assert 'profileurl' in data
+    assert 'timecreated' in data
 
 
-def test_steam_client_returns_games_list(steamid, user_games):
+def test_steam_client_returns_games_list_with_correct_atributes(steamid, user_games):
     data = Steam().get_user_games(steamid)
 
     assert data == user_games
