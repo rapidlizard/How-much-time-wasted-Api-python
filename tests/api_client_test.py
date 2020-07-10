@@ -17,6 +17,13 @@ def mock_user_json():
 
 
 @pytest.fixture
+def mock_games_json():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockjson/games.json') as f:
+        games_json = json.load(f)
+    return games_json
+
+
+@pytest.fixture
 def user_data():
     with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/userdata.json') as f:
         user_data = json.load(f)
@@ -39,7 +46,13 @@ def test_steam_client_gets_user(requests_mock, user_data, mock_user_json, steami
     assert resp == user_data
 
 
-# def test_steam_client_gets_games(requests_mock, user_games, mock_games_json, steamid):
+def test_steam_client_gets_games(requests_mock, user_games, mock_games_json, steamid):
+    requests_mock.get('http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamid=' + steamid,
+                      json=mock_games_json)
+
+    resp = Steam().get_user_games(steamid)
+
+    assert resp == user_games
 
 
 def test_steam_client_returns_user_data(steamid, user_data):
