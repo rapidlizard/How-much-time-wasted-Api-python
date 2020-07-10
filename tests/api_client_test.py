@@ -30,14 +30,16 @@ def user_games():
     return games
 
 
-def test_steam_client_gets_user(user_data, mock_user_json, requests_mock):
-    test_id = '2FA14ED02A1D7CCC0E4FCA80AE6AE194'
-    requests_mock.get('http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamids=2FA14ED02A1D7CCC0E4FCA80AE6AE194',
+def test_steam_client_gets_user(requests_mock, user_data, mock_user_json, steamid):
+    requests_mock.get('http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamids=' + steamid,
                       json=mock_user_json)
 
-    resp = Steam().get_user_data(test_id)
+    resp = Steam().get_user_data(steamid)
 
     assert resp == user_data
+
+
+# def test_steam_client_gets_games(requests_mock, user_games, mock_games_json, steamid):
 
 
 def test_steam_client_returns_user_data(steamid, user_data):
