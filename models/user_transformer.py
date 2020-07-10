@@ -11,4 +11,5 @@ class User_transformer():
             created=str(data['timecreated']),
             games=[]
         )
+
         return user

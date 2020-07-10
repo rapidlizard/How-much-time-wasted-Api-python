@@ -19,14 +19,6 @@ def test_user_has_atributes():
 
 
 def test_user_to_json_returns_json():
-    user = User(
-        name='Lixard',
-        img='myimg.jpg',
-        url='myurl.com',
-        created='10/10/2012',
-        games=['hello', 'world']
-
-    )
     expected = {
         'name': 'Lixard',
         'img': 'myimg.jpg',
@@ -38,6 +30,13 @@ def test_user_to_json_returns_json():
         ]
     }
 
+    user = User(
+        name='Lixard',
+        img='myimg.jpg',
+        url='myurl.com',
+        created='10/10/2012',
+        games=['hello', 'world']
+    )
     result = user.to_json()
 
     assert result == expected
@@ -48,3 +47,15 @@ def test_game_has_atributes():
 
     assert game.appid == 10
     assert game.playtime == 1000
+
+
+def test_game_to_json_returns_json():
+    expected = {
+        'appid': 10,
+        'playtime': 1000
+    }
+
+    game = Game(appid=10, playtime=1000)
+    result = game.to_json()
+
+    assert result == expected
