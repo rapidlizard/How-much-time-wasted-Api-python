@@ -8,6 +8,7 @@ pytest = "*"
 flask = "*"
 pytest-cov = "*"
 pylint-flask = "*"
+requests-mock = "*"
 
 [dev-packages]
 

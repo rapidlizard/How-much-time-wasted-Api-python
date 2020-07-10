@@ -4,30 +4,18 @@ from models.user_transformer import User_transformer
 from models.game_transformer import Game_transformer
 
 import json
+import pytest
 
 
-def test_transformer_turns_user_data_into_user_obj():
-    data = {
-        "steamid": "76561198066000502",
-        "communityvisibilitystate": 3,
-        "profilestate": 1,
-        "personaname": "Lixard",
-        "commentpermission": 1,
-        "profileurl": "https://steamcommunity.com/profiles/76561198066000502/",
-        "avatar": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d.jpg",
-        "avatarmedium": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_medium.jpg",
-        "avatarfull": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg",
-        "avatarhash": "4ad45031967e52ce05f28c7f5591227e66715c5d",
-        "lastlogoff": 1594329563,
-        "personastate": 0,
-        "primaryclanid": "103582791463737200",
-        "timecreated": 1340730740,
-        "personastateflags": 4,
-        "loccountrycode": "PT",
-        "locstatecode": "14"
-    }
+@pytest.fixture
+def user_data():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/userdata.json') as f:
+        user_data = json.load(f)
+    return user_data
 
-    user = User_transformer().transform_user(data)
+
+def test_transformer_turns_user_data_into_user_obj(user_data):
+    user = User_transformer().transform_user(user_data)
 
     assert type(user) == User
     assert user.name == 'Lixard'
@@ -52,7 +40,7 @@ def test_transformer_turns_game_data_into_game_obj():
 
 
 def test_transformer_turns_each_game_in_games_data_into_game_obj():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/gameslist.json') as f:
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/gamesdata.json') as f:
         data = json.load(f)
 
     games = Game_transformer().transform_games_list(data)
