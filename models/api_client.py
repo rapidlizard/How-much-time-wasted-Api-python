@@ -3,8 +3,6 @@ import json
 
 
 class Steam():
-    def __init__(self):
-        api_key = '2FA14ED02A1D7CCC0E4FCA80AE6AE194'
 
     def get_user_data(self, steamid: str):
         url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamids=' + steamid
