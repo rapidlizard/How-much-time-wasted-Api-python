@@ -55,16 +55,18 @@ def test_steam_client_gets_games(requests_mock, user_games, mock_games_json, ste
     assert resp == user_games
 
 
+def test_steam_client_returns_correct_user(requests_mock, mock_user_json, steamid):
+    requests_mock.get('http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamids=' + steamid,
+                      json=mock_user_json)
+
+    resp = Steam().get_user_data(steamid)
+    assert resp['steamid'] == steamid
+
+
 def test_steam_client_returns_user_data(steamid, user_data):
     data = Steam().get_user_data(steamid)
 
     assert data == user_data
-
-
-def test_steam_client_returns_correct_user(steamid):
-    data = Steam().get_user_data(steamid)
-
-    assert data['steamid'] == steamid
 
 
 def test_steam_client_returns_games_list(steamid, user_games):
