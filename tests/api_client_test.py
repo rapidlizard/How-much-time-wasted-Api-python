@@ -75,4 +75,6 @@ def test_steam_client_returns_user_data_with_correct_atributes(steamid, user_dat
 def test_steam_client_returns_games_list_with_correct_atributes(steamid, user_games):
     data = Steam().get_user_games(steamid)
 
-    assert data == user_games
+    for game_data in data:
+        assert 'appid' in game_data
+        assert 'playtime_forever' in game_data
