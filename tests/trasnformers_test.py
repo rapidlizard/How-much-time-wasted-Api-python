@@ -14,6 +14,20 @@ def user_data():
     return user_data
 
 
+@pytest.fixture
+def games():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/gamesdata.json') as f:
+        data = json.load(f)
+    return data
+
+
+@pytest.fixture
+def transformed_games():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/transformed_games.json') as f:
+        data = json.load(f)
+    return data
+
+
 def test_transformer_turns_user_data_into_user_obj(user_data):
     user = User_transformer().transform_user(user_data)
 
@@ -39,11 +53,8 @@ def test_transformer_turns_game_data_into_game_obj():
     assert game.playtime == 3257
 
 
-def test_transformer_turns_each_game_in_games_data_into_game_obj():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/gamesdata.json') as f:
-        data = json.load(f)
-
-    games = Game_transformer().transform_games_list(data)
+def test_transformer_turns_each_game_in_games_data_into_game_obj(games):
+    games = Game_transformer().transform_games_list(games)
 
     for game in games:
         assert type(game) == Game

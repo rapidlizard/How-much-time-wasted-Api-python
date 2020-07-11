@@ -1,0 +1,14 @@
+[
+    {
+        "appid": 10,
+        "playtime": 82
+    },
+    {
+        "appid": 80,
+        "playtime_forever": 0
+    },
+    {
+        "appid": 100,
+        "playtime_forever": 0
+    }
+]
