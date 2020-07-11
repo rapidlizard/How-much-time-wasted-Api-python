@@ -1,5 +1,6 @@
-from app import app
+from app import *
 import pytest
+import json
 
 
 @pytest.fixture
@@ -12,17 +13,32 @@ def steamid():
     return "76561198066000502"
 
 
-def test_api_returns_user_json(client, steamid):
-    response = client.get('/howmuchtimehaveiwasted/' + steamid)
+@pytest.fixture
+def json_return():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/fullreturn.json') as data:
+        json_return = json.load(data)
+    return json_return
 
-    assert response.status_code == 200
-    assert response.get_json() == {
-        'name': 'Lixard',
-        'img': 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg',
-        'url': 'https://steamcommunity.com/profiles/76561198066000502/',
-        'created': '1340730740',
-        'games': []
-    }
+
+# def test_api_returns_user_json(monkeypatch, client, steamid, json_return):
+
+#     def user_mock():
+#         with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockjson/user.json') as data:
+#             mock_data = json.load(data)
+#         return mock_data
+
+#     def games_mock():
+#         with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockjson/games.json') as data:
+#             mock_data = json.load(data)
+#         return mock_data
+
+#     monkeypatch.setattr(Steam, 'get_user_data', user_mock)
+#     monkeypatch.setattr(Steam, 'get_user_games', games_mock)
+
+#     response = client.get('/howmuchtimehaveiwasted/' + steamid)
+
+#     assert response.status_code == 200
+#     assert response.get_json() == json_return
 
 
 def test_api_returns_error_if_given_bad_steamid(client):

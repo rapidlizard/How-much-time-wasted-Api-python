@@ -23,6 +23,10 @@ def get_user(steamid):
     user = User_transformer().transform_user(user_data)
     games = Game_transformer().transform_games_list(games_data)
 
+    for game in games:
+        json_game = game.to_json()
+        user.games.append(json_game)
+
     return jsonify(user.to_json())
 
 
