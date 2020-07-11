@@ -29,6 +29,8 @@ def get_user(steamid):
     for game in games:
         user.games.append(game.to_json())
 
+    user.total_playtime = int(user.total_playtime / 60)
+
     return jsonify(user.to_json())
 
 
