@@ -1,6 +1,6 @@
 class User():
 
-    def __init__(self, name: str, img: str, url:str, created: str, games: list):
+    def __init__(self, name: str, img: str, url: str, created: int, games: list):
         self.name = name
         self.img = img
         self.url = url

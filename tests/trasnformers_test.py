@@ -21,7 +21,7 @@ def test_transformer_turns_user_data_into_user_obj(user_data):
     assert user.name == 'Lixard'
     assert user.img == 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg'
     assert user.url == 'https://steamcommunity.com/profiles/76561198066000502/'
-    assert user.created == '1340730740'
+    assert user.created == 1340730740
 
 
 def test_transformer_turns_game_data_into_game_obj():

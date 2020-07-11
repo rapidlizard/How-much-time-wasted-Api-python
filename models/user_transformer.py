@@ -8,7 +8,7 @@ class User_transformer():
             name=data['personaname'],
             img=data['avatarfull'],
             url=data['profileurl'],
-            created=str(data['timecreated']),
+            created=data['timecreated'],
             games=[]
         )
 
