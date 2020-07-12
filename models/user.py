@@ -1,12 +1,12 @@
 class User():
 
-    def __init__(self, name: str, img: str, url: str, created: int, games: list, total_playtime: int):
+    def __init__(self, name: str, img: str, url: str, created: int, games: list):
         self.name = name
         self.img = img
         self.url = url
         self.created = created
         self.games = games
-        self.total_playtime = total_playtime
+        self.total_playtime = 0
 
     def to_json(self):
         return {
@@ -15,5 +15,4 @@ class User():
             'url': self.url,
             'created': self.created,
             'games': self.games,
-            'total_playtime': self.total_playtime
         }

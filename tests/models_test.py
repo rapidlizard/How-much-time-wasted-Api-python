@@ -9,7 +9,6 @@ def test_user_has_atributes():
         url='https://steamcommunity.com/profiles/76561198066000502/',
         created=1340730740,
         games=['hello', 'world'],
-        total_playtime=1000
     )
 
     assert user.name == 'Lixard'
@@ -17,7 +16,6 @@ def test_user_has_atributes():
     assert user.url == 'https://steamcommunity.com/profiles/76561198066000502/'
     assert user.created == 1340730740
     assert user.games == ['hello', 'world']
-    assert user.total_playtime == 1000
 
 
 def test_user_to_json_returns_json():
@@ -26,7 +24,6 @@ def test_user_to_json_returns_json():
         'img': 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg',
         'url': 'https://steamcommunity.com/profiles/76561198066000502/',
         'created': 1340730740,
-        'total_playtime': 1000,
         'games': [
             'hello',
             'world'
@@ -39,7 +36,6 @@ def test_user_to_json_returns_json():
         url='https://steamcommunity.com/profiles/76561198066000502/',
         created=1340730740,
         games=['hello', 'world'],
-        total_playtime=1000
     )
     result = user.to_json()
 
