@@ -21,15 +21,7 @@ def get_user(steamid):
         return jsonify('There was a problem finding that user'), 400
 
     games = Game_transformer().transform_games_list(games_data)
-    user = User_transformer().transform_user(user_data)
-
-    for game in games:
-        user.total_playtime += game.playtime
-
-    for game in games:
-        user.games.append(game.to_json())
-
-    user.total_playtime = int(user.total_playtime / 60)
+    user = User_transformer().transform_user(user_data, games)
 
     return jsonify(user.to_json())
 

@@ -19,6 +19,7 @@ class User():
             'url': self.url,
             'created': self.created,
             'games': json_games,
+            'total_hours': self.total_hours
         }
 
     def calc_total_hours(self):
