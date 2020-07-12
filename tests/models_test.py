@@ -25,6 +25,7 @@ def test_user_to_json_returns_json(user):
         'img': 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg',
         'url': 'https://steamcommunity.com/profiles/76561198066000502/',
         'created': 1340730740,
+        'total_hours': 110,
         'games': [
             {
                 'appid': 10,
