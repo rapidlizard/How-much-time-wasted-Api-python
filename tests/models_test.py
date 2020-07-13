@@ -49,6 +49,12 @@ def test_user_calculates_total_hours(user):
     assert user.total_hours == expected
 
 
+def test_user_calculates_score(user):
+    expected = 6050
+
+    assert user.score == expected
+
+
 def test_game_has_atributes():
     game = Game(appid=10, playtime=1000)
 

@@ -7,6 +7,7 @@ class User():
         self.created = created
         self.games = games
         self.total_hours = self.calc_total_hours()
+        self.score = self.calc_score()
 
     def to_json(self):
         json_games = []
@@ -31,3 +32,6 @@ class User():
         total_hours = int(total_minutes / 60)
 
         return total_hours
+
+    def calc_score(self):
+        return self.total_hours * (self.total_hours * 0.5)
