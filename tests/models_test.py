@@ -26,6 +26,7 @@ def test_user_to_json_returns_json(user):
         'url': 'https://steamcommunity.com/profiles/76561198066000502/',
         'created': 1340730740,
         'total_hours': 110,
+        'score': 6050,
         'games': [
             {
                 'appid': 10,
