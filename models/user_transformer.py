@@ -1,10 +1,12 @@
 from models.user import User
+from models.rating_calc import Rating_calc
 
 
 class User_transformer():
 
     def transform_user(self, user_data, user_games):
         user = User(
+            rating_calc=Rating_calc(),
             name=user_data['personaname'],
             img=user_data['avatarfull'],
             url=user_data['profileurl'],

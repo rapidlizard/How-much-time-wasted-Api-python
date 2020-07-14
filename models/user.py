@@ -1,6 +1,7 @@
 class User():
 
-    def __init__(self, name: str, img: str, url: str, created: int, games: list):
+    def __init__(self, rating_calc, name: str, img: str, url: str, created: int, games: list):
+        self.rating_calc = rating_calc
         self.name = name
         self.img = img
         self.url = url
@@ -8,6 +9,7 @@ class User():
         self.games = games
         self.total_hours = self.calc_total_hours()
         self.score = self.calc_score()
+        self.rating = self.calc_rating()
 
     def to_json(self):
         json_games = []
@@ -36,3 +38,6 @@ class User():
 
     def calc_score(self):
         return self.total_hours * (self.total_hours * 0.5)
+
+    def calc_rating(self):
+        return self.rating_calc.get_rating(self.total_hours)

@@ -1,6 +1,7 @@
 from models.user import User
 from models.game import Game
 from models.rating import Rating
+from models.rating_calc import Rating_calc
 import pytest
 
 
@@ -14,7 +15,8 @@ def user():
         games=[
             Game(appid=10, playtime=4600),
             Game(appid=20, playtime=2000)
-        ]
+        ],
+        rating_calc=Rating_calc()
     )
 
     return user
@@ -55,6 +57,14 @@ def test_user_calculates_score(user):
     expected = 6050
 
     assert user.score == expected
+
+
+def test_user_calculates_rating(user):
+    expected = Rating(title='You might aswell just play mobile games',
+                      description='Sponsored by RAID: Shadow Legends')
+
+    assert user.rating.title == expected.title
+    assert user.rating.description == expected.description
 
 
 def test_game_has_atributes():
