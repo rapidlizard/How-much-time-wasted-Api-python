@@ -29,4 +29,4 @@ class Csgo_stats():
         }
 
     def calc_accuracy(self):
-        return (self.shots_hit / self.shots_fired) * 100
+        return round((self.shots_hit / self.shots_fired) * 100, 2)

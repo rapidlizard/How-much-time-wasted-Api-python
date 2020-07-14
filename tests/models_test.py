@@ -145,6 +145,23 @@ def test_csgo_stats_calculates_accuracy_percent():
     assert csgo_stats.accuracy == 50.0
 
 
+def test_csgo_stats_rounds_accuracy_percent():
+    csgo_stats = Csgo_stats(
+        hours=1000,
+        total_kills=1000,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=15643,
+        shots_hit=6450
+    )
+
+    assert csgo_stats.accuracy == 41.23
+
+
 def test_csgo_stats_to_json_returns_json():
     expected = {
         'hours': 1000,
