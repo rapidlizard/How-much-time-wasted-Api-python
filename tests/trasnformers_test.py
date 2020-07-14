@@ -46,7 +46,28 @@ def test_user_transformer_turns_user_data_into_user_obj(user_data):
     assert user.games == games
 
 
-def test__game_transformer_turns_game_data_into_game_obj():
+def test_game_transformer_turns_game_data_into_game_obj():
+    data = {
+        "appid": 17390,
+        "playtime_forever": 3257,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+    }
+
+    game = Game_transformer().transform_game(data)
+
+    assert isinstance(game, Game) == True
+
+
+def test_game_transformer_turns_each_game_in_games_data_into_game_obj(games):
+    games = Game_transformer().transform_games_list(games)
+
+    for game in games:
+        assert isinstance(game, Game) == True
+
+
+def test_game_transformer_returns_game_obj_with_correct_atributes():
     data = {
         "appid": 17390,
         "playtime_forever": 3257,
@@ -59,13 +80,6 @@ def test__game_transformer_turns_game_data_into_game_obj():
 
     assert game.appid == 17390
     assert game.playtime == 3257
-
-
-def test_game_transformer_turns_each_game_in_games_data_into_game_obj(games):
-    games = Game_transformer().transform_games_list(games)
-
-    for game in games:
-        assert type(game) == Game
 
 
 def test_csgo_stats_transformer_turns_stats_data_into_csgo_stats_obj(csgo_stats):
