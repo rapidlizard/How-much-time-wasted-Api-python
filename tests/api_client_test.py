@@ -108,3 +108,15 @@ def test_steam_client_returns_csgo_stats_data_with_correct_attributes(steamid):
     data = Steam().get_user_csgo_stats(steamid)
 
     assert 'total_time_played' in data
+    assert 'total_kills' in data
+    assert 'total_defused_bombs' in data
+    assert 'total_money_earned' in data
+    assert 'total_planted_bombs' in data
+    assert 'total_mvps' in data
+    assert 'total_wins' in data
+    assert 'total_weapons_donated' in data
+    assert 'total_kills_knife' in data
+    assert 'total_matches_won' in data
+    assert 'total_matches_played' in data
+    assert 'total_shots_fired' in data
+    assert 'total_shots_hit' in data
