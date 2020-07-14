@@ -13,6 +13,7 @@ class Csgo_stats():
         self.shots_fired = shots_fired
         self.shots_hit = shots_hit
         self.accuracy = self.calc_accuracy()
+        self.kd_ratio = self.calc_kd_ratio()
 
     def to_json(self):
         return {
@@ -32,3 +33,6 @@ class Csgo_stats():
 
     def calc_accuracy(self):
         return round((self.shots_hit / self.shots_fired) * 100, 2)
+
+    def calc_kd_ratio(self):
+        return round(self.total_kills / self.total_deaths, 2)

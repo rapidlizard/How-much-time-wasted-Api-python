@@ -148,7 +148,7 @@ def test_csgo_stats_calculates_accuracy_percent():
     assert csgo_stats.accuracy == 50.0
 
 
-def test_csgo_stats_rounds_accuracy_percent():
+def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places():
     csgo_stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
@@ -198,3 +198,43 @@ def test_csgo_stats_to_json_returns_json():
     result = csgo_stats.to_json()
 
     assert result == expected
+
+
+def test_csgo_stats_calculates_kd_ratio():
+    csgo_stats = Csgo_stats(
+        hours=1000,
+        total_kills=1000,
+        total_deaths=100,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=1000,
+        shots_hit=1000
+    )
+
+    result = csgo_stats.kd_ratio
+
+    assert result == 10
+
+
+def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places():
+    csgo_stats = Csgo_stats(
+        hours=1000,
+        total_kills=4957,
+        total_deaths=1260,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=1000,
+        shots_hit=1000
+    )
+
+    result = csgo_stats.kd_ratio
+
+    assert result == 3.93
