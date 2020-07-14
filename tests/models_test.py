@@ -18,7 +18,18 @@ def user():
             Game(appid=20, playtime=2000)
         ],
         rating_calc=Rating_calc(),
-        csgo_stats=Csgo_stats(1000)
+        csgo_stats=Csgo_stats(
+            hours=1000,
+            total_kills=1000,
+            defused_bombs=1000,
+            planted_bombs=1000,
+            money_earned=1000,
+            mvps=1000,
+            total_wins=1000,
+            knife_kills=1000,
+            shots_fired=1000,
+            shots_hit=1000
+        )
     )
 
     return user
@@ -47,7 +58,16 @@ def test_user_to_json_returns_json(user):
             'description': 'Sponsored by RAID: Shadow Legends'
         },
         'csgo_stats': {
-            'hours': 1000
+            'hours': 1000,
+            'total_kills': 1000,
+            'defused_bombs': 1000,
+            'planted_bombs': 1000,
+            'money_earned': 1000,
+            'mvps': 1000,
+            'total_wins': 1000,
+            'knife_kills': 1000,
+            'shots_fired': 1000,
+            'shots_hit': 1000
         }
     }
 
@@ -109,10 +129,30 @@ def test_rating_to_json_returns_json():
 
 def test_csgo_stats_to_json_returns_json():
     expected = {
-        'hours': 1000
+        'hours': 1000,
+        'total_kills': 1000,
+        'defused_bombs': 1000,
+        'planted_bombs': 1000,
+        'money_earned': 1000,
+        'mvps': 1000,
+        'total_wins': 1000,
+        'knife_kills': 1000,
+        'shots_fired': 1000,
+        'shots_hit': 1000
     }
 
-    csgo_stats = Csgo_stats(hours=1000)
+    csgo_stats = Csgo_stats(
+        hours=1000,
+        total_kills=1000,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=1000,
+        shots_hit=1000
+    )
     result = csgo_stats.to_json()
 
     assert result == expected

@@ -36,7 +36,18 @@ def test_user_transformer_turns_user_data_into_user_obj(user_data):
         Game(appid=10, playtime=4600),
         Game(appid=20, playtime=2000)
     ]
-    stats = Csgo_stats(hours=1000)
+    stats = Csgo_stats(
+        hours=1000,
+        total_kills=1000,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=1000,
+        shots_hit=1000
+    )
 
     user = User_transformer().transform_user(user_data, games, stats)
 
@@ -48,7 +59,18 @@ def test_user_transformer_returns_user_obj_with_correct_atributes(user_data):
         Game(appid=10, playtime=4600),
         Game(appid=20, playtime=2000)
     ]
-    stats = Csgo_stats(hours=1000)
+    stats = Csgo_stats(
+        hours=1000,
+        total_kills=1000,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=1000,
+        shots_hit=1000
+    )
 
     user = User_transformer().transform_user(user_data, games, stats)
 
@@ -105,3 +127,12 @@ def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats):
     csgo_stats = Csgo_stats_transformer().transform_csgo_stats(csgo_stats)
 
     assert csgo_stats.hours == 5272693
+    assert csgo_stats.total_kills == 214095
+    assert csgo_stats.defused_bombs == 717
+    assert csgo_stats.planted_bombs == 2732
+    assert csgo_stats.money_earned == 278525408
+    assert csgo_stats.mvps == 29980
+    assert csgo_stats.total_wins == 56101
+    assert csgo_stats.knife_kills == 1177
+    assert csgo_stats.shots_fired == 2231475
+    assert csgo_stats.shots_hit == 552856
