@@ -14,7 +14,8 @@ class Csgo_stats_transformer():
             total_wins=csgo_stats_data['total_wins'],
             knife_kills=csgo_stats_data['total_kills_knife'],
             shots_fired=csgo_stats_data['total_shots_fired'],
-            shots_hit=csgo_stats_data['total_shots_hit']
+            shots_hit=csgo_stats_data['total_shots_hit'],
+            total_deaths=csgo_stats_data['total_deaths']
         )
 
         return csgo_stats

@@ -120,3 +120,4 @@ def test_steam_client_returns_csgo_stats_data_with_correct_attributes(steamid):
     assert 'total_matches_played' in data
     assert 'total_shots_fired' in data
     assert 'total_shots_hit' in data
+    assert 'total_deaths' in data

@@ -1,8 +1,9 @@
 class Csgo_stats():
 
-    def __init__(self, hours, total_kills, defused_bombs, planted_bombs, money_earned, mvps, total_wins, knife_kills, shots_fired, shots_hit):
+    def __init__(self, hours, total_kills, total_deaths, defused_bombs, planted_bombs, money_earned, mvps, total_wins, knife_kills, shots_fired, shots_hit):
         self.hours = hours
         self.total_kills = total_kills
+        self.total_deaths = total_deaths
         self.defused_bombs = defused_bombs
         self.planted_bombs = planted_bombs
         self.money_earned = money_earned
@@ -17,6 +18,7 @@ class Csgo_stats():
         return {
             'hours': self.hours,
             'total_kills': self.total_kills,
+            'total_deaths': self.total_deaths,
             'defused_bombs': self.defused_bombs,
             'planted_bombs': self.planted_bombs,
             'money_earned': self.money_earned,

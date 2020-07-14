@@ -39,6 +39,7 @@ def test_user_transformer_turns_user_data_into_user_obj(user_data):
     stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
+        total_deaths=100,
         defused_bombs=1000,
         planted_bombs=1000,
         money_earned=1000,
@@ -62,6 +63,7 @@ def test_user_transformer_returns_user_obj_with_correct_atributes(user_data):
     stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
+        total_deaths=100,
         defused_bombs=1000,
         planted_bombs=1000,
         money_earned=1000,
@@ -136,3 +138,4 @@ def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats):
     assert csgo_stats.knife_kills == 1177
     assert csgo_stats.shots_fired == 2231475
     assert csgo_stats.shots_hit == 552856
+    assert csgo_stats.total_deaths == 103202

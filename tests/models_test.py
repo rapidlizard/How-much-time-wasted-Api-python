@@ -21,6 +21,7 @@ def user():
         csgo_stats=Csgo_stats(
             hours=1000,
             total_kills=1000,
+            total_deaths=100,
             defused_bombs=1000,
             planted_bombs=1000,
             money_earned=1000,
@@ -60,6 +61,7 @@ def test_user_to_json_returns_json(user):
         'csgo_stats': {
             'hours': 1000,
             'total_kills': 1000,
+            'total_deaths': 100,
             'defused_bombs': 1000,
             'planted_bombs': 1000,
             'money_earned': 1000,
@@ -132,6 +134,7 @@ def test_csgo_stats_calculates_accuracy_percent():
     csgo_stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
+        total_deaths=100,
         defused_bombs=1000,
         planted_bombs=1000,
         money_earned=1000,
@@ -149,6 +152,7 @@ def test_csgo_stats_rounds_accuracy_percent():
     csgo_stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
+        total_deaths=100,
         defused_bombs=1000,
         planted_bombs=1000,
         money_earned=1000,
@@ -166,6 +170,7 @@ def test_csgo_stats_to_json_returns_json():
     expected = {
         'hours': 1000,
         'total_kills': 1000,
+        'total_deaths': 100,
         'defused_bombs': 1000,
         'planted_bombs': 1000,
         'money_earned': 1000,
@@ -180,6 +185,7 @@ def test_csgo_stats_to_json_returns_json():
     csgo_stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
+        total_deaths=100,
         defused_bombs=1000,
         planted_bombs=1000,
         money_earned=1000,
