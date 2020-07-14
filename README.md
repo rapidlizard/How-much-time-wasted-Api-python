@@ -23,7 +23,7 @@ The purpose of this app is to show you how many hours you wasted playing games a
 - 8000 -> 9999 hours: **Dude. Are you okay?** When was the last time you went outside??
 - 10'000 and onwards: **You need to seek medical help** https://www.nhs.uk/
 
-## Csgo stats:
+### Csgo stats:
 
 - Hours played
 - Kills
