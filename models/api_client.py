@@ -26,4 +26,10 @@ class Steam():
 
         data = response.json()
 
-        return data['playerstats']['stats']
+        data = data['playerstats']['stats']
+
+        stats_list = {}
+        for stat in data:
+            stats_list[stat['name']] = stat['value']
+
+        return stats_list
