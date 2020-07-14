@@ -1,7 +1,10 @@
 from models.game import Game
 from models.user import User
+from models.csgo_stats import Csgo_stats
 from models.user_transformer import User_transformer
 from models.game_transformer import Game_transformer
+from models.csgo_stats_transformer import Csgo_stats_transformer
+
 
 import json
 import pytest
@@ -17,11 +20,18 @@ def user_data():
 @pytest.fixture
 def games():
     with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/gamesdata.json') as f:
-        data = json.load(f)
-    return data
+        games = json.load(f)
+    return games
 
 
-def test_transformer_turns_user_data_into_user_obj(user_data):
+@pytest.fixture
+def csgo_stats():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/userstats.json') as f:
+        stats = json.load(f)
+    return stats
+
+
+def test_user_transformer_turns_user_data_into_user_obj(user_data):
     games = [
         Game(appid=10, playtime=4600),
         Game(appid=20, playtime=2000)
@@ -36,7 +46,7 @@ def test_transformer_turns_user_data_into_user_obj(user_data):
     assert user.games == games
 
 
-def test_transformer_turns_game_data_into_game_obj():
+def test__game_transformer_turns_game_data_into_game_obj():
     data = {
         "appid": 17390,
         "playtime_forever": 3257,
@@ -51,8 +61,20 @@ def test_transformer_turns_game_data_into_game_obj():
     assert game.playtime == 3257
 
 
-def test_transformer_turns_each_game_in_games_data_into_game_obj(games):
+def test_game_transformer_turns_each_game_in_games_data_into_game_obj(games):
     games = Game_transformer().transform_games_list(games)
 
     for game in games:
         assert type(game) == Game
+
+
+def test_csgo_stats_transformer_turns_stats_data_into_csgo_stats_obj(csgo_stats):
+    csgo_stats = Csgo_stats_transformer().transform_csgo_stats(csgo_stats)
+
+    assert isinstance(csgo_stats, Csgo_stats) == True
+
+
+def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats):
+    csgo_stats = Csgo_stats_transformer().transform_csgo_stats(csgo_stats)
+
+    assert csgo_stats.hours == 5272693
