@@ -24,6 +24,13 @@ def mock_games_json():
 
 
 @pytest.fixture
+def mock_stats_json():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockjson/stats.json') as f:
+        stats = json.load(f)
+    return stats
+
+
+@pytest.fixture
 def user_data():
     with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/userdata.json') as f:
         user_data = json.load(f)
@@ -35,6 +42,13 @@ def user_games():
     with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/gamesdata.json') as f:
         games = json.load(f)
     return games
+
+
+@pytest.fixture
+def user_stats():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/userstats.json') as f:
+        stats = json.load(f)
+    return stats
 
 
 def test_steam_client_gets_user(requests_mock, user_data, mock_user_json, steamid):
@@ -60,7 +74,17 @@ def test_steam_client_returns_correct_user(requests_mock, mock_user_json, steami
                       json=mock_user_json)
 
     resp = Steam().get_user_data(steamid)
+
     assert resp['steamid'] == steamid
+
+
+def test_steam_client_gets_csgo_stats(requests_mock, mock_stats_json, user_stats, steamid):
+    requests_mock.get(
+        'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamid=' + steamid, json=mock_stats_json)
+
+    resp = Steam().get_user_csgo_stats(steamid)
+
+    assert resp == user_stats
 
 
 def test_steam_client_returns_user_data_with_correct_atributes(steamid, user_data):

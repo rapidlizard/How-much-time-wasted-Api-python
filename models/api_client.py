@@ -19,3 +19,11 @@ class Steam():
         data = response.json()
 
         return data['response']['games']
+
+    def get_user_csgo_stats(self, steamid: str):
+        url = 'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=2FA14ED02A1D7CCC0E4FCA80AE6AE194&steamid=' + steamid
+        response = requests.get(url)
+
+        data = response.json()
+
+        return data['playerstats']['stats']
