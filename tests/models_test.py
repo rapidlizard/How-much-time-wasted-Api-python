@@ -67,7 +67,8 @@ def test_user_to_json_returns_json(user):
             'total_wins': 1000,
             'knife_kills': 1000,
             'shots_fired': 1000,
-            'shots_hit': 1000
+            'shots_hit': 1000,
+            'accuracy': 100.0
         }
     }
 
@@ -127,6 +128,23 @@ def test_rating_to_json_returns_json():
     assert result == expected
 
 
+def test_csgo_stats_calculates_accuracy_percent():
+    csgo_stats = Csgo_stats(
+        hours=1000,
+        total_kills=1000,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=1000,
+        shots_hit=500
+    )
+
+    assert csgo_stats.accuracy == 50.0
+
+
 def test_csgo_stats_to_json_returns_json():
     expected = {
         'hours': 1000,
@@ -138,7 +156,8 @@ def test_csgo_stats_to_json_returns_json():
         'total_wins': 1000,
         'knife_kills': 1000,
         'shots_fired': 1000,
-        'shots_hit': 1000
+        'shots_hit': 1000,
+        'accuracy': 100.0
     }
 
     csgo_stats = Csgo_stats(

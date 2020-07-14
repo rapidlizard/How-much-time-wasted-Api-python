@@ -11,6 +11,7 @@ class Csgo_stats():
         self.knife_kills = knife_kills
         self.shots_fired = shots_fired
         self.shots_hit = shots_hit
+        self.accuracy = self.calc_accuracy()
 
     def to_json(self):
         return {
@@ -23,5 +24,9 @@ class Csgo_stats():
             'total_wins': self.total_wins,
             'knife_kills': self.knife_kills,
             'shots_fired': self.shots_fired,
-            'shots_hit': self.shots_hit
+            'shots_hit': self.shots_hit,
+            'accuracy': self.accuracy
         }
+
+    def calc_accuracy(self):
+        return (self.shots_hit / self.shots_fired) * 100
