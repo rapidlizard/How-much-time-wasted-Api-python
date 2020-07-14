@@ -17,7 +17,8 @@ def user():
             Game(appid=10, playtime=4600),
             Game(appid=20, playtime=2000)
         ],
-        rating_calc=Rating_calc()
+        rating_calc=Rating_calc(),
+        csgo_stats=Csgo_stats(1000)
     )
 
     return user
@@ -44,6 +45,9 @@ def test_user_to_json_returns_json(user):
         'rating': {
             'title': 'You might aswell just play mobile games',
             'description': 'Sponsored by RAID: Shadow Legends'
+        },
+        'csgo_stats': {
+            'hours': 1000
         }
     }
 

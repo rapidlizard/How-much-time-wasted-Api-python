@@ -1,12 +1,13 @@
 class User():
 
-    def __init__(self, rating_calc, name: str, img: str, url: str, created: int, games: list):
+    def __init__(self, rating_calc, name: str, img: str, url: str, created: int, games: list, csgo_stats):
         self.rating_calc = rating_calc
         self.name = name
         self.img = img
         self.url = url
         self.created = created
         self.games = games
+        self.csgo_stats = csgo_stats
         self.total_hours = self.calc_total_hours()
         self.score = self.calc_score()
         self.rating = self.calc_rating()
@@ -24,7 +25,8 @@ class User():
             'games': json_games,
             'total_hours': self.total_hours,
             'score': self.score,
-            'rating': self.rating.to_json()
+            'rating': self.rating.to_json(),
+            'csgo_stats': self.csgo_stats.to_json()
         }
 
     def calc_total_hours(self):

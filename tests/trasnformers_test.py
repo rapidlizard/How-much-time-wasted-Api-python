@@ -36,7 +36,9 @@ def test_user_transformer_turns_user_data_into_user_obj(user_data):
         Game(appid=10, playtime=4600),
         Game(appid=20, playtime=2000)
     ]
-    user = User_transformer().transform_user(user_data, games)
+    stats = Csgo_stats(hours=1000)
+
+    user = User_transformer().transform_user(user_data, games, stats)
 
     assert isinstance(user, User) == True
 
@@ -46,7 +48,9 @@ def test_user_transformer_returns_user_obj_with_correct_atributes(user_data):
         Game(appid=10, playtime=4600),
         Game(appid=20, playtime=2000)
     ]
-    user = User_transformer().transform_user(user_data, games)
+    stats = Csgo_stats(hours=1000)
+
+    user = User_transformer().transform_user(user_data, games, stats)
 
     assert user.name == 'Lixard'
     assert user.img == 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg'
