@@ -70,7 +70,8 @@ def test_user_to_json_returns_json(user):
             'knife_kills': 1000,
             'shots_fired': 1000,
             'shots_hit': 1000,
-            'accuracy': 100.0
+            'accuracy': 100.0,
+            'kd_ratio': 10
         }
     }
 
@@ -166,40 +167,6 @@ def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places():
     assert csgo_stats.accuracy == 41.23
 
 
-def test_csgo_stats_to_json_returns_json():
-    expected = {
-        'hours': 1000,
-        'total_kills': 1000,
-        'total_deaths': 100,
-        'defused_bombs': 1000,
-        'planted_bombs': 1000,
-        'money_earned': 1000,
-        'mvps': 1000,
-        'total_wins': 1000,
-        'knife_kills': 1000,
-        'shots_fired': 1000,
-        'shots_hit': 1000,
-        'accuracy': 100.0
-    }
-
-    csgo_stats = Csgo_stats(
-        hours=1000,
-        total_kills=1000,
-        total_deaths=100,
-        defused_bombs=1000,
-        planted_bombs=1000,
-        money_earned=1000,
-        mvps=1000,
-        total_wins=1000,
-        knife_kills=1000,
-        shots_fired=1000,
-        shots_hit=1000
-    )
-    result = csgo_stats.to_json()
-
-    assert result == expected
-
-
 def test_csgo_stats_calculates_kd_ratio():
     csgo_stats = Csgo_stats(
         hours=1000,
@@ -238,3 +205,38 @@ def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places():
     result = csgo_stats.kd_ratio
 
     assert result == 3.93
+
+
+def test_csgo_stats_to_json_returns_json():
+    expected = {
+        'hours': 1000,
+        'total_kills': 1000,
+        'total_deaths': 100,
+        'defused_bombs': 1000,
+        'planted_bombs': 1000,
+        'money_earned': 1000,
+        'mvps': 1000,
+        'total_wins': 1000,
+        'knife_kills': 1000,
+        'shots_fired': 1000,
+        'shots_hit': 1000,
+        'accuracy': 100.0,
+        'kd_ratio': 10
+    }
+
+    csgo_stats = Csgo_stats(
+        hours=1000,
+        total_kills=1000,
+        total_deaths=100,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=1000,
+        shots_hit=1000
+    )
+    result = csgo_stats.to_json()
+
+    assert result == expected

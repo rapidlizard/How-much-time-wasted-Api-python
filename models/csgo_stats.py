@@ -28,7 +28,8 @@ class Csgo_stats():
             'knife_kills': self.knife_kills,
             'shots_fired': self.shots_fired,
             'shots_hit': self.shots_hit,
-            'accuracy': self.accuracy
+            'accuracy': self.accuracy,
+            'kd_ratio': self.kd_ratio
         }
 
     def calc_accuracy(self):
