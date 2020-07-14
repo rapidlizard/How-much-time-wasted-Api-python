@@ -2,6 +2,7 @@ from models.user import User
 from models.game import Game
 from models.rating import Rating
 from models.rating_calc import Rating_calc
+from models.csgo_stats import Csgo_stats
 import pytest
 
 
@@ -98,5 +99,16 @@ def test_rating_to_json_returns_json():
 
     rating = Rating(title='hello', description='world')
     result = rating.to_json()
+
+    assert result == expected
+
+
+def test_csgo_stats_to_json_returns_json():
+    expected = {
+        'hours': 1000
+    }
+
+    csgo_stats = Csgo_stats(hours=1000)
+    result = csgo_stats.to_json()
 
     assert result == expected
