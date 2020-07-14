@@ -1,5 +1,6 @@
 from models.user import User
 from models.game import Game
+from models.rating import Rating
 import pytest
 
 
@@ -71,5 +72,17 @@ def test_game_to_json_returns_json():
 
     game = Game(appid=10, playtime=1000)
     result = game.to_json()
+
+    assert result == expected
+
+
+def test_rating_to_json_returns_json():
+    expected = {
+        'title': 'hello',
+        'description': 'world'
+    }
+
+    rating = Rating(title='hello', description='world')
+    result = rating.to_json()
 
     assert result == expected
