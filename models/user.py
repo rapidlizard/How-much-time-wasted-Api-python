@@ -23,7 +23,8 @@ class User():
             'created': self.created,
             'games': json_games,
             'total_hours': self.total_hours,
-            'score': self.score
+            'score': self.score,
+            'rating': self.rating.to_json()
         }
 
     def calc_total_hours(self):
@@ -37,7 +38,7 @@ class User():
         return total_hours
 
     def calc_score(self):
-        return self.total_hours * (self.total_hours * 0.5)
+        return int(self.total_hours * (self.total_hours * 0.5))
 
     def calc_rating(self):
         return self.rating_calc.get_rating(self.total_hours)

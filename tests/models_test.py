@@ -39,7 +39,11 @@ def test_user_to_json_returns_json(user):
                 'appid': 20,
                 'playtime': 2000
             }
-        ]
+        ],
+        'rating': {
+            'title': 'You might aswell just play mobile games',
+            'description': 'Sponsored by RAID: Shadow Legends'
+        }
     }
 
     result = user.to_json()
