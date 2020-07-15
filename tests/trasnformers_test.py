@@ -52,7 +52,7 @@ def test_user_transformer_turns_user_data_into_user_obj(user_data):
 
     user = User_transformer().transform_user(user_data, games, stats)
 
-    assert isinstance(user, User) == True
+    assert isinstance(user, User)
 
 
 def test_user_transformer_returns_user_obj_with_correct_atributes(user_data):
@@ -94,14 +94,14 @@ def test_game_transformer_turns_game_data_into_game_obj():
 
     game = Game_transformer().transform_game(data)
 
-    assert isinstance(game, Game) == True
+    assert isinstance(game, Game)
 
 
 def test_game_transformer_turns_each_game_in_games_data_into_game_obj(games):
     games = Game_transformer().transform_games_list(games)
 
     for game in games:
-        assert isinstance(game, Game) == True
+        assert isinstance(game, Game)
 
 
 def test_game_transformer_returns_game_obj_with_correct_atributes():
@@ -122,7 +122,7 @@ def test_game_transformer_returns_game_obj_with_correct_atributes():
 def test_csgo_stats_transformer_turns_stats_data_into_csgo_stats_obj(csgo_stats):
     csgo_stats = Csgo_stats_transformer().transform_csgo_stats(csgo_stats)
 
-    assert isinstance(csgo_stats, Csgo_stats) == True
+    assert isinstance(csgo_stats, Csgo_stats)
 
 
 def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats):
