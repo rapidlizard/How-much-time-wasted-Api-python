@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 from models.user import User
 from models.api_client import Steam
 from models.user_transformer import User_transformer
@@ -6,6 +7,7 @@ from models.game_transformer import Game_transformer
 from models.csgo_stats_transformer import Csgo_stats_transformer
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/howmuchtimehaveiwasted/')
@@ -13,7 +15,7 @@ def no_steamid():
     return jsonify('Please provide a steamid'), 400
 
 
-@app.route('/howmuchtimehaveiwasted/<steamid>')
+@app.route('/howmuchtimehaveiwasted/<steamid>',  methods=["GET"])
 def get_user(steamid):
     try:
         user_data = Steam().get_user_data(steamid)
