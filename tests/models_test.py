@@ -71,6 +71,12 @@ def csgo_stats(gun_stats):
         knife_kills=1177,
         shots_fired=2231475,
         shots_hit=552856,
+        rescued_hostages=507,
+        headshots=117038,
+        weapons_donated=8067,
+        dominations=3711,
+        revenges=317,
+        broken_windows=98,
         gun_stats=gun_stats
     )
 
@@ -101,6 +107,12 @@ def user(gun_stats):
             total_deaths=103202,
             total_kills=214095,
             total_wins=56101,
+            rescued_hostages=507,
+            headshots=117038,
+            weapons_donated=8067,
+            dominations=3711,
+            revenges=317,
+            broken_windows=98,
             gun_stats=gun_stats
         )
     )

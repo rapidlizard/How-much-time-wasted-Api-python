@@ -85,6 +85,12 @@ def test_user_transformer_turns_user_data_into_user_obj(user_data, gun_stats_obj
         knife_kills=1000,
         shots_fired=1000,
         shots_hit=1000,
+        rescued_hostages=507,
+        headshots=117038,
+        weapons_donated=8067,
+        dominations=3711,
+        revenges=317,
+        broken_windows=98,
         gun_stats=gun_stats_obj
     )
 
@@ -110,6 +116,12 @@ def test_user_transformer_returns_user_obj_with_correct_atributes(user_data):
         knife_kills=1000,
         shots_fired=1000,
         shots_hit=1000,
+        rescued_hostages=507,
+        headshots=117038,
+        weapons_donated=8067,
+        dominations=3711,
+        revenges=317,
+        broken_windows=98,
         gun_stats=gun_stats_obj
     )
 

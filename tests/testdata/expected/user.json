@@ -14,6 +14,12 @@
         "total_deaths": 103202,
         "total_kills": 214095,
         "total_wins": 56101,
+        "rescued_hostages": 507,
+        "headshots": 117038,
+        "weapons_donated": 8067,
+        "dominations": 3711,
+        "revenges": 317,
+        "broken_windows": 98,
         "gun_stats": {
             "glock": 7100,
             "deagle": 12602,
