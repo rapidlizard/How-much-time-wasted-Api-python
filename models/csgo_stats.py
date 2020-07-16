@@ -21,6 +21,7 @@ class Csgo_stats():
         self.dominations = dominations
         self.revenges = revenges
         self.broken_windows = broken_windows
+        self.headshot_percentage = self.calc_hs_percent()
 
     def to_json(self):
         return {
@@ -43,7 +44,8 @@ class Csgo_stats():
             'dominations': self.dominations,
             'revenges': self.revenges,
             'broken_windows': self.broken_windows,
-            'gun_stats': self.gun_stats.to_json()
+            'gun_stats': self.gun_stats.to_json(),
+            'headshot_percentage': self.headshot_percentage
         }
 
     def calc_accuracy(self):
@@ -51,3 +53,6 @@ class Csgo_stats():
 
     def calc_kd_ratio(self):
         return round(self.total_kills / self.total_deaths, 2)
+
+    def calc_hs_percent(self):
+        return round((self.headshots / self.total_kills) * 100, 2)

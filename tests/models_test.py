@@ -187,21 +187,16 @@ def test_csgo_stats_calculates_accuracy_percent(csgo_stats):
     assert csgo_stats.accuracy == 24.78
 
 
-def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places(csgo_stats):
-
-    assert csgo_stats.accuracy == 24.78
-
-
 def test_csgo_stats_calculates_kd_ratio(csgo_stats):
     result = csgo_stats.kd_ratio
 
     assert result == 2.07
 
 
-def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places(csgo_stats):
-    result = csgo_stats.kd_ratio
+def test_csgo_stats_calculates_headshot_percentage(csgo_stats):
+    result = csgo_stats.headshot_percentage
 
-    assert result == 2.07
+    assert result == 54.67
 
 
 def test_csgo_stats_to_json_returns_json(csgo_stats, csgo_stats_json):
