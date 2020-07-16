@@ -182,7 +182,7 @@ def test_csgo_stats_transformer_returns_obj_with_correct_attributes(csgo_stats_d
     csgo_stats = Csgo_stats_transformer().transform_csgo_stats(
         csgo_stats_data, gun_stats_obj)
 
-    assert csgo_stats.hours == 5272693
+    assert csgo_stats.hours == 3662
     assert csgo_stats.total_kills == 214095
     assert csgo_stats.defused_bombs == 717
     assert csgo_stats.planted_bombs == 2732

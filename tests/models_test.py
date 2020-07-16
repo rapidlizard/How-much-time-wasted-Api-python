@@ -206,11 +206,15 @@ def test_csgo_stats_calculates_headshot_percentage(csgo_stats):
 
 
 def test_csgo_stats_to_json_returns_json(csgo_stats, csgo_stats_json):
-    expected = csgo_stats_json
-
     result = csgo_stats.to_json()
 
-    assert result == expected
+    assert result == csgo_stats_json
+
+
+def test_csgo_stats_calculates_hours(csgo_stats):
+    result = csgo_stats.hours
+
+    assert result == 3662
 
 
 def test_gun_stats_to_json_returns_json(gun_stats, gun_stats_json):

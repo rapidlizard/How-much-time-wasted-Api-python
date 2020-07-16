@@ -1,7 +1,7 @@
 class Csgo_stats():
 
     def __init__(self, hours, total_kills, total_deaths, defused_bombs, planted_bombs, money_earned, mvps, total_wins, knife_kills, shots_fired, shots_hit, gun_stats, rescued_hostages, headshots, weapons_donated, dominations, revenges, broken_windows):
-        self.hours = hours
+        self.hours = self.calc_hours(hours)
         self.total_kills = total_kills
         self.total_deaths = total_deaths
         self.defused_bombs = defused_bombs
@@ -56,3 +56,6 @@ class Csgo_stats():
 
     def calc_hs_percent(self):
         return round((self.headshots / self.total_kills) * 100, 2)
+
+    def calc_hours(self, hours):
+        return round(hours / 60 / 24)
