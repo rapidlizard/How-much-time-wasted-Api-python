@@ -82,6 +82,7 @@ def test_user_transformer_returns_user_obj_with_correct_atributes(user_data):
     assert user.url == 'https://steamcommunity.com/profiles/76561198066000502/'
     assert user.created == 1340730740
     assert user.games == games
+    assert user.csgo_stats == stats
 
 
 def test_game_transformer_turns_game_data_into_game_obj():
