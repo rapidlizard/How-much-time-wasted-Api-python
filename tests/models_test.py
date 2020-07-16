@@ -151,7 +151,7 @@ def test_user_calculates_rating(user):
     assert user.rating.description == expected.description
 
 
-def test_game_has_atributes():
+def test_game_has_attributes():
     game = Game(appid=10, playtime=1000)
 
     assert game.appid == 10

@@ -87,7 +87,7 @@ def test_steam_client_gets_csgo_stats(requests_mock, mock_stats_json, user_stats
     assert resp == user_stats
 
 
-def test_steam_client_returns_user_data_with_correct_atributes(steamid):
+def test_steam_client_returns_user_data_with_correct_attributes(steamid):
     data = Steam().get_user_data(steamid)
 
     assert 'personaname' in data
@@ -96,7 +96,7 @@ def test_steam_client_returns_user_data_with_correct_atributes(steamid):
     assert 'timecreated' in data
 
 
-def test_steam_client_returns_games_list_with_correct_atributes(steamid):
+def test_steam_client_returns_games_list_with_correct_attributes(steamid):
     data = Steam().get_user_games(steamid)
 
     for game in data:

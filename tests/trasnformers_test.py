@@ -99,7 +99,7 @@ def test_user_transformer_turns_user_data_into_user_obj(user_data, gun_stats_obj
     assert isinstance(user, User)
 
 
-def test_user_transformer_returns_user_obj_with_correct_atributes(user_data):
+def test_user_transformer_returns_user_obj_with_correct_attributes(user_data):
     games = [
         Game(appid=10, playtime=4600),
         Game(appid=20, playtime=2000)
@@ -156,7 +156,7 @@ def test_game_transformer_turns_each_game_in_games_data_into_game_obj(games_data
         assert isinstance(game, Game)
 
 
-def test_game_transformer_returns_game_obj_with_correct_atributes():
+def test_game_transformer_returns_game_obj_with_correct_attributes():
     data = {
         "appid": 17390,
         "playtime_forever": 3257,
@@ -178,7 +178,7 @@ def test_csgo_stats_transformer_turns_stats_data_into_csgo_stats_obj(csgo_stats_
     assert isinstance(csgo_stats, Csgo_stats)
 
 
-def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats_data, gun_stats_obj):
+def test_csgo_stats_transformer_returns_obj_with_correct_attributes(csgo_stats_data, gun_stats_obj):
     csgo_stats = Csgo_stats_transformer().transform_csgo_stats(
         csgo_stats_data, gun_stats_obj)
 
