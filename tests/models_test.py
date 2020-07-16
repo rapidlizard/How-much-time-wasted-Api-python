@@ -126,21 +126,21 @@ def gun_stats_json():
 
 
 def test_user_to_json_returns_json(user, user_json):
-    expected = user_json
+    result = user.to_json()
 
-    assert user.to_json() == expected
+    assert result == user_json
 
 
 def test_user_calculates_total_hours(user):
-    expected = 3
+    result = user.total_hours
 
-    assert user.total_hours == expected
+    assert result == 3
 
 
 def test_user_calculates_score(user):
-    expected = 4
+    result = user.score
 
-    assert user.score == expected
+    assert result == 4
 
 
 def test_user_calculates_rating(user):
@@ -149,6 +149,12 @@ def test_user_calculates_rating(user):
 
     assert user.rating.title == expected.title
     assert user.rating.description == expected.description
+
+
+def test_user_calculates_total_days(user):
+    result = user.total_days
+
+    assert result == 0.12
 
 
 def test_game_has_attributes():

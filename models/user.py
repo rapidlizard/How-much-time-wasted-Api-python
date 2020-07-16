@@ -11,6 +11,7 @@ class User():
         self.total_hours = self.calc_total_hours()
         self.score = self.calc_score()
         self.rating = self.calc_rating()
+        self.total_days = self.calc_total_days()
 
     def to_json(self):
         json_games = []
@@ -26,6 +27,7 @@ class User():
             'total_hours': self.total_hours,
             'score': self.score,
             'rating': self.rating.to_json(),
+            'total_days': self.total_days,
             'csgo_stats': self.csgo_stats.to_json()
         }
 
@@ -44,3 +46,6 @@ class User():
 
     def calc_rating(self):
         return self.rating_calc.get_rating(self.total_hours)
+
+    def calc_total_days(self):
+        return round(self.total_hours / 24, 2)
