@@ -51,6 +51,24 @@ def gun_stats():
 
 
 @pytest.fixture
+def csgo_stats(gun_stats):
+    return Csgo_stats(
+        hours=1000,
+        total_kills=1000,
+        total_deaths=100,
+        defused_bombs=1000,
+        planted_bombs=1000,
+        money_earned=1000,
+        mvps=1000,
+        total_wins=1000,
+        knife_kills=1000,
+        shots_fired=1000,
+        shots_hit=500,
+        gun_stats=gun_stats
+    )
+
+
+@pytest.fixture
 def user(gun_stats):
     return User(
         name='Lixard',
@@ -145,87 +163,29 @@ def test_rating_to_json_returns_json():
     assert result == expected
 
 
-def test_csgo_stats_calculates_accuracy_percent(gun_stats):
-    csgo_stats = Csgo_stats(
-        hours=1000,
-        total_kills=1000,
-        total_deaths=100,
-        defused_bombs=1000,
-        planted_bombs=1000,
-        money_earned=1000,
-        mvps=1000,
-        total_wins=1000,
-        knife_kills=1000,
-        shots_fired=1000,
-        shots_hit=500,
-        gun_stats=gun_stats
-    )
+def test_csgo_stats_calculates_accuracy_percent(csgo_stats):
 
     assert csgo_stats.accuracy == 50.0
 
 
-def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places(gun_stats):
-    csgo_stats = Csgo_stats(
-        hours=1000,
-        total_kills=1000,
-        total_deaths=100,
-        defused_bombs=1000,
-        planted_bombs=1000,
-        money_earned=1000,
-        mvps=1000,
-        total_wins=1000,
-        knife_kills=1000,
-        shots_fired=15643,
-        shots_hit=6450,
-        gun_stats=gun_stats
-    )
+def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places(csgo_stats):
 
-    assert csgo_stats.accuracy == 41.23
+    assert csgo_stats.accuracy == 50.0
 
 
-def test_csgo_stats_calculates_kd_ratio(gun_stats):
-    csgo_stats = Csgo_stats(
-        hours=1000,
-        total_kills=1000,
-        total_deaths=100,
-        defused_bombs=1000,
-        planted_bombs=1000,
-        money_earned=1000,
-        mvps=1000,
-        total_wins=1000,
-        knife_kills=1000,
-        shots_fired=1000,
-        shots_hit=1000,
-        gun_stats=gun_stats
-    )
-
+def test_csgo_stats_calculates_kd_ratio(csgo_stats):
     result = csgo_stats.kd_ratio
 
     assert result == 10
 
 
-def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places(gun_stats):
-    csgo_stats = Csgo_stats(
-        hours=1000,
-        total_kills=4957,
-        total_deaths=1260,
-        defused_bombs=1000,
-        planted_bombs=1000,
-        money_earned=1000,
-        mvps=1000,
-        total_wins=1000,
-        knife_kills=1000,
-        shots_fired=1000,
-        shots_hit=1000,
-        gun_stats=gun_stats
-    )
-
+def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places(csgo_stats):
     result = csgo_stats.kd_ratio
 
-    assert result == 3.93
+    assert result == 10.0
 
 
-def test_csgo_stats_to_json_returns_json():
+def test_csgo_stats_to_json_returns_json(csgo_stats):
     expected = {
         'hours': 1000,
         'total_kills': 1000,
@@ -237,25 +197,11 @@ def test_csgo_stats_to_json_returns_json():
         'total_wins': 1000,
         'knife_kills': 1000,
         'shots_fired': 1000,
-        'shots_hit': 1000,
-        'accuracy': 100.0,
-        'kd_ratio': 10
+        'shots_hit': 500,
+        'accuracy': 50.0,
+        'kd_ratio': 10.0
     }
 
-    csgo_stats = Csgo_stats(
-        hours=1000,
-        total_kills=1000,
-        total_deaths=100,
-        defused_bombs=1000,
-        planted_bombs=1000,
-        money_earned=1000,
-        mvps=1000,
-        total_wins=1000,
-        knife_kills=1000,
-        shots_fired=1000,
-        shots_hit=1000,
-        gun_stats=gun_stats
-    )
     result = csgo_stats.to_json()
 
     assert result == expected
