@@ -16,6 +16,13 @@ def user_json():
 
 
 @pytest.fixture
+def csgo_stats_json():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/expected/csgo_stats.json') as f:
+        csgo_stats_json = json.load(f)
+    return csgo_stats_json
+
+
+@pytest.fixture
 def gun_stats():
     return Gun_stats(
         glock=7100,
@@ -53,17 +60,17 @@ def gun_stats():
 @pytest.fixture
 def csgo_stats(gun_stats):
     return Csgo_stats(
-        hours=1000,
-        total_kills=1000,
-        total_deaths=100,
-        defused_bombs=1000,
-        planted_bombs=1000,
-        money_earned=1000,
-        mvps=1000,
-        total_wins=1000,
-        knife_kills=1000,
-        shots_fired=1000,
-        shots_hit=500,
+        hours=5272693,
+        total_kills=214095,
+        total_deaths=103202,
+        defused_bombs=717,
+        planted_bombs=2732,
+        money_earned=278525408,
+        mvps=29980,
+        total_wins=56101,
+        knife_kills=1177,
+        shots_fired=2231475,
+        shots_hit=552856,
         gun_stats=gun_stats
     )
 
@@ -165,42 +172,28 @@ def test_rating_to_json_returns_json():
 
 def test_csgo_stats_calculates_accuracy_percent(csgo_stats):
 
-    assert csgo_stats.accuracy == 50.0
+    assert csgo_stats.accuracy == 24.78
 
 
 def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places(csgo_stats):
 
-    assert csgo_stats.accuracy == 50.0
+    assert csgo_stats.accuracy == 24.78
 
 
 def test_csgo_stats_calculates_kd_ratio(csgo_stats):
     result = csgo_stats.kd_ratio
 
-    assert result == 10
+    assert result == 2.07
 
 
 def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places(csgo_stats):
     result = csgo_stats.kd_ratio
 
-    assert result == 10.0
+    assert result == 2.07
 
 
-def test_csgo_stats_to_json_returns_json(csgo_stats):
-    expected = {
-        'hours': 1000,
-        'total_kills': 1000,
-        'total_deaths': 100,
-        'defused_bombs': 1000,
-        'planted_bombs': 1000,
-        'money_earned': 1000,
-        'mvps': 1000,
-        'total_wins': 1000,
-        'knife_kills': 1000,
-        'shots_fired': 1000,
-        'shots_hit': 500,
-        'accuracy': 50.0,
-        'kd_ratio': 10.0
-    }
+def test_csgo_stats_to_json_returns_json(csgo_stats, csgo_stats_json):
+    expected = csgo_stats_json
 
     result = csgo_stats.to_json()
 

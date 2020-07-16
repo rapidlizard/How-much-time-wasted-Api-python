@@ -30,7 +30,8 @@ class Csgo_stats():
             'shots_fired': self.shots_fired,
             'shots_hit': self.shots_hit,
             'accuracy': self.accuracy,
-            'kd_ratio': self.kd_ratio
+            'kd_ratio': self.kd_ratio,
+            'gun_stats': self.gun_stats.to_json()
         }
 
     def calc_accuracy(self):
