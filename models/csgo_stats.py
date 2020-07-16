@@ -1,6 +1,6 @@
 class Csgo_stats():
 
-    def __init__(self, hours, total_kills, total_deaths, defused_bombs, planted_bombs, money_earned, mvps, total_wins, knife_kills, shots_fired, shots_hit):
+    def __init__(self, hours, total_kills, total_deaths, defused_bombs, planted_bombs, money_earned, mvps, total_wins, knife_kills, shots_fired, shots_hit, gun_stats):
         self.hours = hours
         self.total_kills = total_kills
         self.total_deaths = total_deaths
@@ -14,6 +14,7 @@ class Csgo_stats():
         self.shots_hit = shots_hit
         self.accuracy = self.calc_accuracy()
         self.kd_ratio = self.calc_kd_ratio()
+        self.gun_stats = gun_stats
 
     def to_json(self):
         return {

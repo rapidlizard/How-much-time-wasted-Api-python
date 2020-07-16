@@ -3,7 +3,7 @@ from models.csgo_stats import Csgo_stats
 
 class Csgo_stats_transformer():
 
-    def transform_csgo_stats(self, csgo_stats_data):
+    def transform_csgo_stats(self, csgo_stats_data, gun_stats):
         csgo_stats = Csgo_stats(
             hours=csgo_stats_data['total_time_played'],
             total_kills=csgo_stats_data['total_kills'],
@@ -15,7 +15,8 @@ class Csgo_stats_transformer():
             knife_kills=csgo_stats_data['total_kills_knife'],
             shots_fired=csgo_stats_data['total_shots_fired'],
             shots_hit=csgo_stats_data['total_shots_hit'],
-            total_deaths=csgo_stats_data['total_deaths']
+            total_deaths=csgo_stats_data['total_deaths'],
+            gun_stats=gun_stats
         )
 
         return csgo_stats

@@ -16,43 +16,6 @@ def user_json():
 
 
 @pytest.fixture
-def user():
-    return User(
-        name='Lixard',
-        img='https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg',
-        url='https://steamcommunity.com/profiles/76561198066000502/',
-        created=1340730740,
-        games=[
-            Game(appid=10, playtime=82),
-            Game(appid=80, playtime=0),
-            Game(appid=100, playtime=0),
-            Game(appid=240, playtime=98)
-        ],
-        rating_calc=Rating_calc(),
-        csgo_stats=Csgo_stats(
-            defused_bombs=717,
-            hours=5272693,
-            knife_kills=1177,
-            money_earned=278525408,
-            mvps=29980,
-            planted_bombs=2732,
-            shots_fired=2231475,
-            shots_hit=552856,
-            total_deaths=103202,
-            total_kills=214095,
-            total_wins=56101
-        )
-    )
-
-
-@pytest.fixture
-def gun_stats_json():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/expected/gun_stats.json') as f:
-        user_json = json.load(f)
-    return user_json
-
-
-@pytest.fixture
 def gun_stats():
     return Gun_stats(
         glock=7100,
@@ -85,6 +48,44 @@ def gun_stats():
         m4a1=23951,
         galil=752
     )
+
+
+@pytest.fixture
+def user(gun_stats):
+    return User(
+        name='Lixard',
+        img='https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg',
+        url='https://steamcommunity.com/profiles/76561198066000502/',
+        created=1340730740,
+        games=[
+            Game(appid=10, playtime=82),
+            Game(appid=80, playtime=0),
+            Game(appid=100, playtime=0),
+            Game(appid=240, playtime=98)
+        ],
+        rating_calc=Rating_calc(),
+        csgo_stats=Csgo_stats(
+            defused_bombs=717,
+            hours=5272693,
+            knife_kills=1177,
+            money_earned=278525408,
+            mvps=29980,
+            planted_bombs=2732,
+            shots_fired=2231475,
+            shots_hit=552856,
+            total_deaths=103202,
+            total_kills=214095,
+            total_wins=56101,
+            gun_stats=gun_stats
+        )
+    )
+
+
+@pytest.fixture
+def gun_stats_json():
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/expected/gun_stats.json') as f:
+        user_json = json.load(f)
+    return user_json
 
 
 def test_user_to_json_returns_json(user, user_json):
@@ -144,7 +145,7 @@ def test_rating_to_json_returns_json():
     assert result == expected
 
 
-def test_csgo_stats_calculates_accuracy_percent():
+def test_csgo_stats_calculates_accuracy_percent(gun_stats):
     csgo_stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
@@ -156,13 +157,14 @@ def test_csgo_stats_calculates_accuracy_percent():
         total_wins=1000,
         knife_kills=1000,
         shots_fired=1000,
-        shots_hit=500
+        shots_hit=500,
+        gun_stats=gun_stats
     )
 
     assert csgo_stats.accuracy == 50.0
 
 
-def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places():
+def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places(gun_stats):
     csgo_stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
@@ -174,13 +176,14 @@ def test_csgo_stats_rounds_accuracy_percent_to_2_decimal_places():
         total_wins=1000,
         knife_kills=1000,
         shots_fired=15643,
-        shots_hit=6450
+        shots_hit=6450,
+        gun_stats=gun_stats
     )
 
     assert csgo_stats.accuracy == 41.23
 
 
-def test_csgo_stats_calculates_kd_ratio():
+def test_csgo_stats_calculates_kd_ratio(gun_stats):
     csgo_stats = Csgo_stats(
         hours=1000,
         total_kills=1000,
@@ -192,7 +195,8 @@ def test_csgo_stats_calculates_kd_ratio():
         total_wins=1000,
         knife_kills=1000,
         shots_fired=1000,
-        shots_hit=1000
+        shots_hit=1000,
+        gun_stats=gun_stats
     )
 
     result = csgo_stats.kd_ratio
@@ -200,7 +204,7 @@ def test_csgo_stats_calculates_kd_ratio():
     assert result == 10
 
 
-def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places():
+def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places(gun_stats):
     csgo_stats = Csgo_stats(
         hours=1000,
         total_kills=4957,
@@ -212,7 +216,8 @@ def test_csgo_stats_kd_ratio_calc_rounds_to_2_decimal_places():
         total_wins=1000,
         knife_kills=1000,
         shots_fired=1000,
-        shots_hit=1000
+        shots_hit=1000,
+        gun_stats=gun_stats
     )
 
     result = csgo_stats.kd_ratio
@@ -248,7 +253,8 @@ def test_csgo_stats_to_json_returns_json():
         total_wins=1000,
         knife_kills=1000,
         shots_fired=1000,
-        shots_hit=1000
+        shots_hit=1000,
+        gun_stats=gun_stats
     )
     result = csgo_stats.to_json()
 
