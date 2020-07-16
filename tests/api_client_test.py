@@ -32,21 +32,21 @@ def mock_stats_json():
 
 @pytest.fixture
 def user_data():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/userdata.json') as f:
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/userdata.json') as f:
         user_data = json.load(f)
     return user_data
 
 
 @pytest.fixture
 def user_games():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/gamesdata.json') as f:
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/gamesdata.json') as f:
         games = json.load(f)
     return games
 
 
 @pytest.fixture
 def user_stats():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/userstats.json') as f:
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/userstats.json') as f:
         stats = json.load(f)
     return stats
 

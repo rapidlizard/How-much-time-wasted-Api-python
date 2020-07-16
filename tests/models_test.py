@@ -240,3 +240,37 @@ def test_csgo_stats_to_json_returns_json():
     result = csgo_stats.to_json()
 
     assert result == expected
+
+
+def test_gun_stats_to_json_returns_json():
+    expected = {
+        'glock': 7100,
+        'deagle': 12602,
+        'elite': 150,
+        'fiveseven': 679,
+        'xm10': 394,
+        'mac10': 1169,
+        'ump': 1576,
+        'p90': 1128,
+        'awp': 33620,
+        'ak47': 107332,
+        'aug': 1584,
+        'famas': 721,
+        'g3sg1': 222,
+        'm249': 220,
+        'p2000': 8907,
+        'p250': 2403,
+        'sg556': 1787,
+        'scar20': 233,
+        'scout': 1593,
+        'mp7': 1593,
+        'mp9': 932,
+        'nova': 208,
+        'negev': 299,
+        'sawedoff': 112,
+        'bizon': 386,
+        'tec9': 463,
+        'mag7': 137,
+        'm4a1': 23951,
+        'galil': 752
+    }

@@ -30,3 +30,37 @@ class Gun_stats():
         self.mag7 = mag7
         self.m4a1 = m4a1
         self.galil = galil
+
+    def to_json(self):
+        json_game_stats = {
+            'glock': self.glock,
+            'deagle': self.deagle,
+            'elite': self.elite,
+            'fiveseven': self.fiveseven,
+            'xm10': self.xm10,
+            'mac10': self.mac10,
+            'ump': self.ump,
+            'p90': self.p90,
+            'awp': self.awp,
+            'ak47': self.ak47,
+            'aug': self.aug,
+            'famas': self.famas,
+            'g3sg1': self.g3sg1,
+            'm249': self.m249,
+            'p2000': self.p2000,
+            'p250': self.p250,
+            'sg556': self.sg556,
+            'scar20': self.scar20,
+            'scout': self.scout,
+            'mp7': self.mp7,
+            'mp9': self.mp9,
+            'nova': self.nova,
+            'negev': self.negev,
+            'sawedoff': self.sawedoff,
+            'bizon': self.bizon,
+            'tec9': self.tec9,
+            'mag7': self.mag7,
+            'm4a1': self.m4a1,
+            'galil': self.galil
+        }
+        return json_game_stats

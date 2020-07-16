@@ -15,7 +15,7 @@ def steamid():
 
 @pytest.fixture
 def json_return():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/mockdata/fullreturn.json') as data:
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/fullreturn.json') as data:
         json_return = json.load(data)
     return json_return
 
