@@ -1,10 +1,10 @@
 from models.game import Game
 from models.user import User
 from models.csgo_stats import Csgo_stats
-from models.user_transformer import User_transformer
-from models.game_transformer import Game_transformer
-from models.csgo_stats_transformer import Csgo_stats_transformer
-from models.gun_stats_transformer import Gun_stats_transformer
+from transformers.user_transformer import User_transformer
+from transformers.game_transformer import Game_transformer
+from transformers.csgo_stats_transformer import Csgo_stats_transformer
+from transformers.gun_stats_transformer import Gun_stats_transformer
 
 
 import json

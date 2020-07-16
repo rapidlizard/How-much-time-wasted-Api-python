@@ -2,9 +2,9 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from models.user import User
 from models.api_client import Steam
-from models.user_transformer import User_transformer
-from models.game_transformer import Game_transformer
-from models.csgo_stats_transformer import Csgo_stats_transformer
+from transformers.user_transformer import User_transformer
+from transformers.game_transformer import Game_transformer
+from transformers.csgo_stats_transformer import Csgo_stats_transformer
 
 app = Flask(__name__)
 CORS(app)
