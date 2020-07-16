@@ -20,14 +20,14 @@ def user_data():
 
 
 @pytest.fixture
-def games():
+def games_data():
     with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/inputs/gamesdata.json') as f:
         games = json.load(f)
     return games
 
 
 @pytest.fixture
-def csgo_stats():
+def csgo_stats_data():
     with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/inputs/statsdata.json') as f:
         stats = json.load(f)
     return stats
@@ -100,8 +100,8 @@ def test_game_transformer_turns_game_data_into_game_obj():
     assert isinstance(game, Game)
 
 
-def test_game_transformer_turns_each_game_in_games_data_into_game_obj(games):
-    games = Game_transformer().transform_games_list(games)
+def test_game_transformer_turns_each_game_in_games_data_into_game_obj(games_data):
+    games = Game_transformer().transform_games_list(games_data)
 
     for game in games:
         assert isinstance(game, Game)
@@ -122,14 +122,14 @@ def test_game_transformer_returns_game_obj_with_correct_atributes():
     assert game.playtime == 3257
 
 
-def test_csgo_stats_transformer_turns_stats_data_into_csgo_stats_obj(csgo_stats):
-    csgo_stats = Csgo_stats_transformer().transform_csgo_stats(csgo_stats)
+def test_csgo_stats_transformer_turns_stats_data_into_csgo_stats_obj(csgo_stats_data):
+    csgo_stats = Csgo_stats_transformer().transform_csgo_stats(csgo_stats_data)
 
     assert isinstance(csgo_stats, Csgo_stats)
 
 
-def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats):
-    csgo_stats = Csgo_stats_transformer().transform_csgo_stats(csgo_stats)
+def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats_data):
+    csgo_stats = Csgo_stats_transformer().transform_csgo_stats(csgo_stats_data)
 
     assert csgo_stats.hours == 5272693
     assert csgo_stats.total_kills == 214095
@@ -144,14 +144,14 @@ def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats):
     assert csgo_stats.total_deaths == 103202
 
 
-def test_gun_stats_transformer_returns_gun_stats_obj(csgo_stats):
-    gun_stats = Gun_stats_transformer().transform_gun_stats(csgo_stats)
+def test_gun_stats_transformer_returns_gun_stats_obj(csgo_stats_data):
+    gun_stats = Gun_stats_transformer().transform_gun_stats(csgo_stats_data)
 
     assert isinstance(gun_stats, Gun_stats)
 
 
-def test_gun_stats_transformer_returns_obj_with_correct_attributes(csgo_stats):
-    gun_stats = Gun_stats_transformer().transform_gun_stats(csgo_stats)
+def test_gun_stats_transformer_returns_obj_with_correct_attributes(csgo_stats_data):
+    gun_stats = Gun_stats_transformer().transform_gun_stats(csgo_stats_data)
 
     assert gun_stats.glock == 7100
     assert gun_stats.deagle == 12602
