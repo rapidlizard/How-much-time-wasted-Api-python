@@ -1,7 +1,7 @@
 from models.user import User
 from models.game import Game
 from models.rating import Rating
-from models.rating_calc import Rating_calc
+from services.rating_calc import Rating_calc
 from models.csgo_stats import Csgo_stats
 from models.gun_stats import Gun_stats
 import pytest

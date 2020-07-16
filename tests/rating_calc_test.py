@@ -1,4 +1,4 @@
-from models.rating_calc import Rating_calc
+from services.rating_calc import Rating_calc
 from models.rating import Rating
 
 

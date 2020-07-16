@@ -1,7 +1,7 @@
 import pytest
 import json
 import requests
-from models.api_client import Steam
+from services.api_client import Steam
 
 
 @pytest.fixture

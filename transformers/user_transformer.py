@@ -1,5 +1,5 @@
 from models.user import User
-from models.rating_calc import Rating_calc
+from services.rating_calc import Rating_calc
 
 
 class User_transformer():

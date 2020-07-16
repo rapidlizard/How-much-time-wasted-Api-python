@@ -2,7 +2,7 @@ from models.game import Game
 from models.user import User
 from models.gun_stats import Gun_stats
 from models.csgo_stats import Csgo_stats
-from models.rating_calc import Rating_calc
+from services.rating_calc import Rating_calc
 
 
 game1_for_test = Game(appid=10, playtime=82)
