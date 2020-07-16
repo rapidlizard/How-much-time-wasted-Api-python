@@ -1,6 +1,7 @@
 from models.game import Game
 from models.user import User
 from models.csgo_stats import Csgo_stats
+from models.gun_stats import Gun_stats
 from transformers.user_transformer import User_transformer
 from transformers.game_transformer import Game_transformer
 from transformers.csgo_stats_transformer import Csgo_stats_transformer
@@ -144,6 +145,12 @@ def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats):
 
 
 def test_gun_stats_transformer_returns_gun_stats_obj(csgo_stats):
+    gun_stats = Gun_stats_transformer().transform_gun_stats(csgo_stats)
+
+    assert isinstance(gun_stats, Gun_stats)
+
+
+def test_gun_stats_transformer_returns_obj_with_correct_attributes(csgo_stats):
     gun_stats = Gun_stats_transformer().transform_gun_stats(csgo_stats)
 
     assert gun_stats.glock == 7100
