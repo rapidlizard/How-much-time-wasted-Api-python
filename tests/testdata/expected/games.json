@@ -5,10 +5,14 @@
     },
     {
         "appid": 80,
-        "playtime_forever": 0
+        "playtime": 0
     },
     {
         "appid": 100,
-        "playtime_forever": 0
+        "playtime": 0
+    },
+    {
+        "appid": 240,
+        "playtime": 98
     }
 ]

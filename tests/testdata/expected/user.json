@@ -1,0 +1,45 @@
+{
+    "created": 1340730740,
+    "csgo_stats": {
+        "accuracy": 24.78,
+        "defused_bombs": 717,
+        "hours": 5272693,
+        "kd_ratio": 2.07,
+        "knife_kills": 1177,
+        "money_earned": 278525408,
+        "mvps": 29980,
+        "planted_bombs": 2732,
+        "shots_fired": 2231475,
+        "shots_hit": 552856,
+        "total_deaths": 103202,
+        "total_kills": 214095,
+        "total_wins": 56101
+    },
+    "games": [
+        {
+            "appid": 10,
+            "playtime": 82
+        },
+        {
+            "appid": 80,
+            "playtime": 0
+        },
+        {
+            "appid": 100,
+            "playtime": 0
+        },
+        {
+            "appid": 240,
+            "playtime": 98
+        }
+    ],
+    "img": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4ad45031967e52ce05f28c7f5591227e66715c5d_full.jpg",
+    "name": "Lixard",
+    "rating": {
+        "description": "Seriously what are they???",
+        "title": "What even are games?"
+    },
+    "score": 4,
+    "total_hours": 3,
+    "url": "https://steamcommunity.com/profiles/76561198066000502/"
+}

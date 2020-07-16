@@ -13,21 +13,21 @@ import pytest
 
 @pytest.fixture
 def user_data():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/userdata.json') as f:
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/inputs/userdata.json') as f:
         user_data = json.load(f)
     return user_data
 
 
 @pytest.fixture
 def games():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/gamesdata.json') as f:
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/inputs/gamesdata.json') as f:
         games = json.load(f)
     return games
 
 
 @pytest.fixture
 def csgo_stats():
-    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/userstats.json') as f:
+    with open('/home/francisco/Desktop/TheSteamHourCalc/tests/testdata/inputs/statsdata.json') as f:
         stats = json.load(f)
     return stats
 
