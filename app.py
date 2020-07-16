@@ -5,6 +5,7 @@ from services.api_client import Steam
 from transformers.user_transformer import User_transformer
 from transformers.game_transformer import Game_transformer
 from transformers.csgo_stats_transformer import Csgo_stats_transformer
+from transformers.gun_stats_transformer import Gun_stats_transformer
 
 app = Flask(__name__)
 CORS(app)
@@ -25,7 +26,8 @@ def get_user(steamid):
         return jsonify('There was a problem finding that user'), 400
 
     games = Game_transformer().transform_games_list(games_data)
-    csgo_stats = Csgo_stats_transformer().transform_csgo_stats(stats_data)
+    gun_stats = Gun_stats_transformer().transform_gun_stats(stats_data)
+    csgo_stats = Csgo_stats_transformer().transform_csgo_stats(stats_data, gun_stats)
     user = User_transformer().transform_user(user_data, games, csgo_stats)
 
     return jsonify(user.to_json())
