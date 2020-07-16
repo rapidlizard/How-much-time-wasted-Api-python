@@ -4,6 +4,7 @@ from models.csgo_stats import Csgo_stats
 from models.user_transformer import User_transformer
 from models.game_transformer import Game_transformer
 from models.csgo_stats_transformer import Csgo_stats_transformer
+from models.gun_stats_transformer import Gun_stats_transformer
 
 
 import json
@@ -139,3 +140,37 @@ def test_csgo_stats_transformer_returns_obj_with_correct_atributes(csgo_stats):
     assert csgo_stats.shots_fired == 2231475
     assert csgo_stats.shots_hit == 552856
     assert csgo_stats.total_deaths == 103202
+
+
+def test_gun_stats_transformer_returns_gun_stats_obj(csgo_stats):
+    gun_stats = Gun_stats_transformer().transform_gun_stats(csgo_stats)
+
+    assert gun_stats.glock == 7100
+    assert gun_stats.deagle == 12602
+    assert gun_stats.elite == 150
+    assert gun_stats.fiveseven == 679
+    assert gun_stats.xm10 == 394
+    assert gun_stats.mac10 == 1169
+    assert gun_stats.ump == 1576
+    assert gun_stats.p90 == 1128
+    assert gun_stats.awp == 33620
+    assert gun_stats.ak47 == 107332
+    assert gun_stats.aug == 1584
+    assert gun_stats.famas == 721
+    assert gun_stats.g3sg1 == 222
+    assert gun_stats.m249 == 220
+    assert gun_stats.p2000 == 8907
+    assert gun_stats.p250 == 2403
+    assert gun_stats.sg556 == 1787
+    assert gun_stats.scar20 == 233
+    assert gun_stats.scout == 1593
+    assert gun_stats.mp7 == 1329
+    assert gun_stats.mp9 == 932
+    assert gun_stats.nova == 208
+    assert gun_stats.negev == 299
+    assert gun_stats.sawedoff == 112
+    assert gun_stats.bizon == 386
+    assert gun_stats.tec9 == 463
+    assert gun_stats.mag7 == 137
+    assert gun_stats.m4a1 == 23951
+    assert gun_stats.galil == 752
