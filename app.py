@@ -23,7 +23,7 @@ def get_user(steamid):
         games_data = Steam().get_user_games(steamid)
         stats_data = Steam().get_user_csgo_stats(steamid)
     except:
-        return jsonify('There was a problem finding that user'), 400
+        return jsonify('There was a problem finding that user'), 404
 
     games = Game_transformer().transform_games_list(games_data)
     gun_stats = Gun_stats_transformer().transform_gun_stats(stats_data)
