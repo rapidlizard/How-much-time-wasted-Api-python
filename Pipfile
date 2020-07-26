@@ -11,6 +11,7 @@ pylint-flask = "*"
 requests-mock = "*"
 pytest-mock = "*"
 flask-cors = "*"
+wheel = "*"
 
 [dev-packages]
 
